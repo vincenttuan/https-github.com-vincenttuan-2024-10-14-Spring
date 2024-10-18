@@ -41,7 +41,7 @@ public class ApiController {
 	}
 	
 	/**
-	 * 3. Lab 練習
+	 * 3. Lab 練習 I
 	 * 路徑: /bmi?h=170.0&w=60.0
 	 * 網址: http://localhost:8080/api/bmi?h=170.0&w=60.0
 	 * 執行結果: bmi = 20.76
@@ -53,4 +53,11 @@ public class ApiController {
 		double bmi = w / Math.pow(h/100, 2);
 		return String.format("bmi = %.2f", bmi);
 	}
+	
+	/**
+	 * 3. Lab 練習 II
+	 * 路徑: /add?x=10&y=30
+	 * 網址: http://localhost:8080/api/add?x=10&y=30
+	 * 執行結果: result = 40
+	 * */
 }
