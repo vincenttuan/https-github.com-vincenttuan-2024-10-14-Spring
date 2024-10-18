@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -65,4 +67,16 @@ public class ApiController {
 		int sum = x + y;
 		return String.format("result = %d", sum);
 	}
+	
+	/**
+	 * 4. 同名多筆的資料
+	 * 路徑: /age?age=17&age=21&age=20
+	 * 網址: http://localhost:8080/api/age?age=17&age=21&age=20
+	 * 計算出平均年齡
+	 */
+	public String getAverageAge(@RequestParam("age") List<Integer> ages) {
+		double avg = ages.stream().mapToInt(Integer::intValue).average().getAsDouble();
+		return String.format("平均年齡: %.1f", avg);
+	}
+	
 }
