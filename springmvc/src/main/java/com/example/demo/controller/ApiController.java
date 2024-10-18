@@ -102,7 +102,7 @@ public class ApiController {
 		// 不及格分數
 		List<Integer> failList = scores.stream().filter(score -> score < 60).collect(Collectors.toList());
 		
-		return String.format("最高分=%d、最低分=%d、平均=%d、總分=%d、及格分數=%s、不及格=%s?", 
+		return String.format("最高分=%d、最低分=%d、平均=%1.f、總分=%d、及格分數=%s、不及格=%s?", 
 				statistics.getMax(), statistics.getMin(), statistics.getAverage(), statistics.getSum(),
 				passList, failList);
 	}
