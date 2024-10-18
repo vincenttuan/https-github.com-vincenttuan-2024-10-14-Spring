@@ -74,6 +74,8 @@ public class ApiController {
 	 * 網址: http://localhost:8080/api/age?age=17&age=21&age=20
 	 * 計算出平均年齡
 	 */
+	@GetMapping("/age")
+	@ResponseBody
 	public String getAverageAge(@RequestParam("age") List<Integer> ages) {
 		double avg = ages.stream().mapToInt(Integer::intValue).average().getAsDouble();
 		return String.format("平均年齡: %.1f", avg);
