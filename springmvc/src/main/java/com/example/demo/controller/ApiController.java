@@ -130,6 +130,7 @@ public class ApiController {
 	 * 路徑: /person?name=Mary&age=17&score=40.5&pass=false
 	 * 網址: http://localhost:8080/api/person?name=John&age=18&score=90.5&pass=true
 	 * 網址: http://localhost:8080/api/person?name=Mary&age=17&score=40.5&pass=false
+	 * 設計一個 Person 的 bean 物件 
 	 */
 	
 	
