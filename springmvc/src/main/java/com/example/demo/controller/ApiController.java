@@ -46,5 +46,11 @@ public class ApiController {
 	 * 網址: http://localhost:8080/api/bmi?h=170.0&w=60.0
 	 * 執行結果: bmi = 20.76
 	 * */
-	
+	@GetMapping("/bmi")
+	@ResponseBody
+	public String bmi(@RequestParam(value = "h") Double h, 
+					  @RequestParam(value = "w") Double w) {
+		double bmi = w / Math.pow(h/100, 2);
+		return String.format("bmi = %.2f", bmi);
+	}
 }
