@@ -40,4 +40,11 @@ public class ApiController {
 		return String.format("Hi %s %d", name, age);
 	}
 	
+	/**
+	 * 3. Lab 練習
+	 * 路徑: /bmi?h=170.0&w=60.0
+	 * 網址: http://localhost:8080/api/bmi?h=170.0&w=60.0
+	 * 執行結果: bmi = 20.76
+	 * */
+	
 }
