@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
@@ -98,13 +99,16 @@ public class ApiController {
 		// 統計資料
 		IntSummaryStatistics statistics = scores.stream().mapToInt(Integer::intValue).summaryStatistics();
 		// 及格分數
-		List<Integer> passList = scores.stream().filter(score -> score >= 60).collect(Collectors.toList());
+		//List<Integer> passList = scores.stream().filter(score -> score >= 60).collect(Collectors.toList());
 		// 不及格分數
-		List<Integer> failList = scores.stream().filter(score -> score < 60).collect(Collectors.toList());
+		//List<Integer> failList = scores.stream().filter(score -> score < 60).collect(Collectors.toList());
+		// 利用 Collectors.partitioningBy 來分組
+		// true: 及格, false: 不及格
+		Map<Boolean, List<Integer>> resultMap = scores.stream().collect(Collectors.partitioningBy(score -> score >= 60));
 		
 		return String.format("最高分=%d、最低分=%d、平均=%.1f、總分=%d、及格分數=%s、不及格=%s", 
 				statistics.getMax(), statistics.getMin(), statistics.getAverage(), statistics.getSum(),
-				passList, failList);
+				resultMap.get(true), resultMap.get(false));
 	}
 	
 }
