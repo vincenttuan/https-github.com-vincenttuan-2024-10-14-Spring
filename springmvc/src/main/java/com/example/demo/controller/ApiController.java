@@ -111,4 +111,17 @@ public class ApiController {
 				resultMap.get(true), resultMap.get(false));
 	}
 	
+	/**
+	 * 6. 多筆參數轉 Map
+	 * 路徑: /product?name=Math&price=12.5&amount=10&outOf=true
+	 * 路徑: /product?name=Comics&price=10.5&amount=20&outOf=false
+	 * 網址: http://localhost:8080/api/product?name=Math&price=12.5&amount=10&outOf=true
+	 * 網址: http://localhost:8080/api/product?name=Comics&price=10.5&amount=20&outOf=false
+	 * */
+	@GetMapping("/product")
+	@ResponseBody
+	public String getProduct(@RequestParam Map<String, String> productMap) {
+		return "product map: " + productMap;
+	}
+	
 }
