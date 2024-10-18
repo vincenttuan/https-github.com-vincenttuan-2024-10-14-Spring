@@ -48,8 +48,8 @@ public class ApiController {
 	 * */
 	@GetMapping("/bmi")
 	@ResponseBody
-	public String bmi(@RequestParam(value = "h") Double h, 
-					  @RequestParam(value = "w") Double w) {
+	public String bmi(@RequestParam(name = "h") Double h, 
+					  @RequestParam(name = "w") Double w) {
 		double bmi = w / Math.pow(h/100, 2);
 		return String.format("bmi = %.2f", bmi);
 	}
