@@ -60,4 +60,9 @@ public class ApiController {
 	 * 網址: http://localhost:8080/api/add?x=10&y=30
 	 * 執行結果: result = 40
 	 * */
+	public String add(@RequestParam(name = "x") Integer x, 
+			  		  @RequestParam(name = "y") Integer y) {
+		int sum = x + y;
+		return String.format("result = %d", sum);
+	}
 }
