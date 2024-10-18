@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 // 了解各種不同URL與參數的傳遞接收 
@@ -32,8 +33,11 @@ public class ApiController {
 	 * 限制: name 參數是一定要加上的
 	 *      age 參數不一定要有(若沒有 age 參數則會給初始值 = 0)
 	 * */
-	public String greet() {
-		return null;
+	@GetMapping("/greet")
+	@ResponseBody
+	public String greet(@RequestParam(value = "name", required = true) String name,
+						@RequestParam(value = "age", required = false, defaultValue = "0") Integer age) {
+		return String.format("Hi %s %d", name, age);
 	}
 	
 }
