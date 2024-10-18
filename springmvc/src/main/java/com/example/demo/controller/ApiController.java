@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.example.demo.bean.Person;
+
 // 了解各種不同URL與參數的傳遞接收 
 @Controller
 @RequestMapping("/api")
@@ -132,6 +134,10 @@ public class ApiController {
 	 * 網址: http://localhost:8080/api/person?name=Mary&age=17&score=40.5&pass=false
 	 * 設計一個 Person 的 bean 物件 
 	 */
-	
+	@GetMapping("/person")
+	@ResponseBody
+	public String getPerson(Person person) {
+		return "person = " + person;
+	}
 	
 }
