@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -138,6 +139,24 @@ public class ApiController {
 	@ResponseBody
 	public String getPerson(Person person) {
 		return "person = " + person;
+	}
+	
+	/**
+	 * 8. 路徑參數: @PathVariable
+	 * 路徑: /score/80
+	 * 路徑: /score/40
+	 * 網址: http://localhost:8080/api/score/80
+	 * 網址: http://localhost:8080/api/score/40
+	 * */
+	@GetMapping("/score/{value}")
+	@ResponseBody
+	public String getScore(@PathVariable("value") Integer value) {
+		String text = """
+						<html>
+							<h1>分數: %d</h1>
+						</html>
+					  """;
+		return String.format(text, value);
 	}
 	
 }
