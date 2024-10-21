@@ -159,4 +159,24 @@ public class ApiController {
 		return String.format(text, value, value>=60);
 	}
 	
+	/**
+	 * Lab: 取水果
+	 * 路徑: /fruit/1
+	 * 路徑: /fruit/2
+	 * 網址: http://localhost:8080/api/fruit/1
+	 * 網址: http://localhost:8080/api/fruit/2
+	 * */
+	@GetMapping("/fruit/{id}")
+	public String getFruit(@PathVariable("id") Integer id) {
+		Map<Integer, String> fruits = Map.of(1, "蘋果", 2, "香蕉", 3, "柳丁");
+		String html = """
+					<html>
+						<h1>得到: %s</h1>
+					</html>
+					""";
+		
+		return String.format(html, fruits.get(id));
+		
+	}
+	
 }
