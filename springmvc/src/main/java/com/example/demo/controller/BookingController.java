@@ -1,5 +1,15 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import com.example.demo.bean.Room;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 /**
  * 會議室預訂系統(Web API)
  * 假設您正在為一家公司開發一個會議室預訂系統。您需要實現一個控制器，該控制器可以處理會議室的預訂請求、取消請求以及查詢當前預訂狀態。
@@ -60,6 +70,23 @@ package com.example.demo.controller;
  * 範例：http://localhost:8080/booking/2/updateName?name=Helen
  * 
  * */
+
+@Controller
+@RequestMapping("/booking")
 public class BookingController {
+	// 建立會議室 
+	private List<Room> rooms = List.of(
+				new Room(101, "101(S)", 10),
+				new Room(202, "202(M)", 25),
+				new Room(303, "303(L)", 80)
+			);
+	
+	// 查詢所有會議室
+	// 路徑: /booking/rooms
+	@GetMapping("/rooms")
+	public String getRooms() {
+		return rooms.toString();
+	}
+	
 	
 }
