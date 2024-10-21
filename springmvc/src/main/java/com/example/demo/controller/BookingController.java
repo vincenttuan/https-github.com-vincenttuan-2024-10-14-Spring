@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.example.demo.bean.Room;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 /**
@@ -84,6 +85,7 @@ public class BookingController {
 	// 查詢所有會議室
 	// 路徑: /booking/rooms
 	@GetMapping("/rooms")
+	@ResponseBody
 	public String getRooms() {
 		return rooms.toString();
 	}
