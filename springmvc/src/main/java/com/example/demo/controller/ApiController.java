@@ -153,10 +153,10 @@ public class ApiController {
 	public String getScore(@PathVariable("value") Integer value) {
 		String text = """
 						<html>
-							<h1>分數: %d</h1>
+							<h1>分數: %d Pass: %b</h1>
 						</html>
 					  """;
-		return String.format(text, value);
+		return String.format(text, value, value>=60);
 	}
 	
 }
