@@ -150,7 +150,7 @@ public class BookingController {
 		}
 		
 		// 判斷是否 roomSize 有資料進行修改
-		if(roomName != null) {
+		if(roomSize != null) {
 			updateRoom.setRoomSize(roomSize); // 修改 roomSize
 		}
 		
