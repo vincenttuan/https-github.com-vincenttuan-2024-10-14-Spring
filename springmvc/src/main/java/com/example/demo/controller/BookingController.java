@@ -80,7 +80,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping("/booking")
 public class BookingController {
 	// 建立會議室 
-	private List<Room> rooms = new ArrayList<>(List.of(
+	private static List<Room> rooms = new ArrayList<>(List.of(
 				new Room(101, "101(S)", 10),
 				new Room(202, "202(M)", 25),
 				new Room(303, "303(L)", 80)
