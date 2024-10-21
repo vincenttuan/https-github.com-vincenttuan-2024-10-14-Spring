@@ -156,6 +156,23 @@ public class BookingController {
 		
 		return "修改完畢";
 	}
+	
+	// 刪除會議室
+	// 路徑: /room/delete/404
+	@GetMapping("/room/delete/{roomId}")
+	@ResponseBody
+	public String deleteRoom(@PathVariable("roomId") Integer roomId) {
+		// 確認是否有已有此會議室
+		Predicate<Room> roomIdFilter = room -> room.getRoomId().equals(roomId); // 過濾條件
+		Optional<Room> optRoom = rooms.stream().filter(roomIdFilter).findAny();
+		if(optRoom.isEmpty()) {
+			return "刪除失敗: 會議室不存在";
+		}
+		
+		Room deleteRoom = optRoom.get(); // 取得要刪除的會議室物件
+		rooms.remove(deleteRoom); // 移除會議室
+		return "刪除成功";
+	}
 }
 
 
