@@ -129,4 +129,39 @@ public class BookingController {
 		return "新增成功";
 	}
 	
+	// 修改會議室
+	// 路徑: /room/update/404?roomName=404(M)&roomSize=55
+	@GetMapping("/room/update/{roomId}")
+	@ResponseBody
+	public String updateRoom(@PathVariable(name = "roomId") Integer roomId,
+							 @RequestParam(name = "roomName", required = false) String roomName,
+							 @RequestParam(name = "roomSize", required = false) Integer roomSize) {
+		// 確認是否有已有此會議室
+		Predicate<Room> roomIdFilter = room -> room.getRoomId().equals(roomId); // 過濾條件
+		Optional<Room> optRoom = rooms.stream().filter(roomIdFilter).findAny();
+		if(optRoom.isEmpty()) {
+			return "修改失敗: 會議室不存在";
+		}
+		
+		Room updateRoom = optRoom.get(); // 得到要修改的會議室物件 
+		// 判斷是否 roomName 有資料進行修改
+		if(roomName != null) {
+			updateRoom.setRoomName(roomName); // 修改 roomName
+		}
+		
+		// 判斷是否 roomSize 有資料進行修改
+		if(roomName != null) {
+			updateRoom.setRoomSize(roomSize); // 修改 roomSize
+		}
+		
+		return "修改完畢";
+	}
 }
+
+
+
+
+
+
+
+
