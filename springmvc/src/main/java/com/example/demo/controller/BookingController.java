@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.function.Predicate;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -108,5 +109,23 @@ public class BookingController {
 		}
 	}
 	
+	// 新增會議室
+	// 路徑: /room/add?roomId=404&roomName=404(S)&roomSize=10
+	@GetMapping("/room/add")
+	@ResponseBody
+	public String addRoom(@RequestParam(name = "roomId", required = true) Integer roomId,
+						  @RequestParam(name = "roomName", required = true) String roomName,
+						  @RequestParam(name = "roomSize", required = true) Integer roomSize) {
+		// 確認是否有已有此會議室
+		Predicate<Room> roomIdFilter = room -> room.getRoomId().equals(roomId); // 過濾條件
+		Optional<Room> optRoom = rooms.stream().filter(roomIdFilter).findAny();
+		if(optRoom.isPresent()) {
+			return "新增失敗: 會議室已存在";
+		}
+		// 新增會議室 
+		Room newRoom = new Room(roomId, roomName, roomSize);
+		rooms.add(newRoom);
+		return "新增成功";
+	}
 	
 }
