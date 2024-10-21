@@ -1,12 +1,14 @@
 package com.example.demo.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.bean.Room;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -83,11 +85,27 @@ public class BookingController {
 			);
 	
 	// 查詢所有會議室
-	// 路徑: /booking/rooms
+	// 路徑: /rooms
 	@GetMapping("/rooms")
 	@ResponseBody
 	public String getRooms() {
 		return rooms.toString();
+	}
+	
+	// 查詢單筆會議室 
+	// 路徑: /rooms/1
+	@GetMapping("/room/{roomId}")
+	@ResponseBody
+	public String getRoom(@PathVariable("roomId") Integer roomId) {
+		Optional<Room> optRoom = rooms.stream()
+				.filter(room -> room.getRoomId().equals(roomId))
+				.findAny();
+		if(optRoom.isPresent()) {
+			Room room = optRoom.get();
+			return room.toString();
+		} else {
+			return "Not found";
+		}
 	}
 	
 	
