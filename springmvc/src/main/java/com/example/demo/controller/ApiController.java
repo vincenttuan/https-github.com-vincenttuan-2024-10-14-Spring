@@ -165,8 +165,10 @@ public class ApiController {
 	 * 路徑: /fruit/2
 	 * 網址: http://localhost:8080/api/fruit/1
 	 * 網址: http://localhost:8080/api/fruit/2
+	 * 目的: 取得單一水果
 	 * */
 	@GetMapping("/fruit/{id}")
+	@ResponseBody
 	public String getFruit(@PathVariable("id") Integer id) {
 		Map<Integer, String> fruits = Map.of(1, "蘋果", 2, "香蕉", 3, "柳丁");
 		String html = """
@@ -176,7 +178,19 @@ public class ApiController {
 					""";
 		
 		return String.format(html, fruits.get(id));
-		
+	}
+	
+	/**
+	 * Lab: 取水果
+	 * 路徑: /fruits
+	 * 網址: http://localhost:8080/api/fruits
+	 * 目的: 取得所有水果
+	 * */
+	@GetMapping("/fruits")
+	@ResponseBody
+	public String getFruits() {
+		Map<Integer, String> fruits = Map.of(1, "蘋果", 2, "香蕉", 3, "柳丁");
+		return fruits.toString();
 	}
 	
 }
