@@ -42,7 +42,12 @@ public class RoomDaoImpl implements RoomDao {
 
 	@Override
 	public Optional<Room> getRoomById(Integer roomId) {
-		Room room = jdbcTemplate.queryForObject(getRoomByIdSql, new BeanPropertyRowMapper<>(Room.class), roomId);
+		Room room = null;
+		try {
+			room = jdbcTemplate.queryForObject(getRoomByIdSql, new BeanPropertyRowMapper<>(Room.class), roomId);
+		} catch (Exception e) {
+			
+		}
 		return room == null ? Optional.empty() : Optional.of(room);
 	}
 
