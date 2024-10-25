@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.demo.bean.Room;
 import com.example.demo.dao.RoomDao;
+import com.example.demo.exception.RoomNotFoundException;
 
 @Service
 public class RoomService {
@@ -22,7 +23,7 @@ public class RoomService {
 	
 	public Room getRoomById(Integer roomId) {
 		return roomDao.getRoomById(roomId)
-					  .orElseThrow(() -> new RuntimeException("找不到會議室: roomId " + roomId));
+					  .orElseThrow(() -> new RoomNotFoundException("找不到會議室: roomId " + roomId));
 	}
 	
 }
