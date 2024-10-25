@@ -10,8 +10,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.bean.Room;
+import com.example.demo.exception.RoomAlreadyExistsException;
+import com.example.demo.exception.RoomNotFoundException;
 import com.example.demo.service.RoomService;
 
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -133,6 +136,20 @@ public class BookingController {
 		return "刪除成功";
 	}
 	
+	// 錯誤處理: 補捉 RoomNotFoundException
+	@ExceptionHandler(RoomNotFoundException.class)
+	@ResponseBody
+	public String handleRoomNotFoundException(RoomNotFoundException e) {
+		return e.getMessage();
+	}
+	
+	// 錯誤處理: 補捉 RoomAlreadyExistsException
+	@ExceptionHandler(RoomAlreadyExistsException.class)
+	@ResponseBody
+	public String handleRoomAlreadyExistsException(RoomAlreadyExistsException e) {
+		return e.getMessage();
+	}
+
 	
 }
 
