@@ -137,19 +137,12 @@ public class BookingController {
 	}
 	
 	// 錯誤處理: 補捉 RoomNotFoundException
-	@ExceptionHandler(RoomNotFoundException.class)
+	@ExceptionHandler({RoomNotFoundException.class, RoomAlreadyExistsException.class})
 	@ResponseBody
-	public String handleRoomNotFoundException(RoomNotFoundException e) {
+	public String handleRoomNotFoundException(RoomException e) {
 		return e.getMessage();
 	}
 	
-	// 錯誤處理: 補捉 RoomAlreadyExistsException
-	@ExceptionHandler(RoomAlreadyExistsException.class)
-	@ResponseBody
-	public String handleRoomAlreadyExistsException(RoomAlreadyExistsException e) {
-		return e.getMessage();
-	}
-
 	
 }
 
