@@ -50,5 +50,13 @@ public class RoomService {
 		roomDao.updateRoom(roomId, room);
 	}
 	
-	
+	public void deleteRoom(Integer roomId) {
+		// 該 Room 是否已經存在
+		Optional<Room> existingRoom = roomDao.getRoomById(roomId);
+		if(existingRoom.isEmpty()) {
+			throw new RoomAlreadyExistsException("刪除失敗: " + roomId + " 會議室不存在");
+		}
+		// 刪除 room
+		roomDao.deleteRoom(roomId);
+	}
 }
