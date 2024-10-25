@@ -39,4 +39,14 @@ public class RoomService {
 		roomDao.addRoom(room);
 	}
 	
+	public void updateRoom(Integer roomId, String roomName, Integer roomSize) {
+		// 該 Room 是否已經存在
+		Optional<Room> existingRoom = roomDao.getRoomById(roomId);
+		if(existingRoom.isEmpty()) {
+			throw new RoomAlreadyExistsException("修改失敗: " + roomId + " 會議室不存在");
+		}
+		// 修改 room
+		Room room = new Room(roomId, roomName, roomSize);
+		roomDao.updateRoom(roomId, room);
+	}
 }
