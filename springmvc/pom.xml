@@ -31,6 +31,12 @@
 	</properties>
 	<dependencies>
 		
+		<!-- jdbctemplate -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-jdbc</artifactId>
+		</dependency>
+		
 		<!-- MySQL -->
 		<dependency>
 			<groupId>com.mysql</groupId>
