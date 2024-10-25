@@ -23,6 +23,18 @@ public class RoomDaoImpl implements RoomDao {
 	@Value("${room.sql.findAllRooms}")
 	private String findAllRoomsSql;
 	
+	@Value("${room.sql.getRoomById}")
+	private String getRoomByIdSql;
+	
+	@Value("${room.sql.addRoom}")
+	private String addRoomSql;
+	
+	@Value("${room.sql.updateRoom}")
+	private String updateRoomSql;
+	
+	@Value("${room.sql.deleteRoom}")
+	private String deleteRoomSql;
+	
 	@Override
 	public List<Room> findAllRooms() {
 		return jdbcTemplate.query(findAllRoomsSql, new BeanPropertyRowMapper<>(Room.class));
@@ -30,27 +42,23 @@ public class RoomDaoImpl implements RoomDao {
 
 	@Override
 	public Optional<Room> getRoomById(Integer roomId) {
-		String sql = "select roomId, roomName, roomSize from room where roomId=?";
-		Room room = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Room.class), roomId);
+		Room room = jdbcTemplate.queryForObject(getRoomByIdSql, new BeanPropertyRowMapper<>(Room.class), roomId);
 		return room == null ? Optional.empty() : Optional.of(room);
 	}
 
 	@Override
 	public void addRoom(Room room) {
-		String sql = "insert into (roomId, roomName, roomSize) values(?, ?, ?)";
-		jdbcTemplate.update(sql, room.getRoomId(), room.getRoomName(), room.getRoomId());
+		jdbcTemplate.update(addRoomSql, room.getRoomId(), room.getRoomName(), room.getRoomId());
 	}
 
 	@Override
 	public void updateRoom(Integer roomId, Room room) {
-		String sql = "update room set roomName=?, roomSize=? where roomId=?";
-		jdbcTemplate.update(sql, room.getRoomName(), room.getRoomSize(), room.getRoomId());
+		jdbcTemplate.update(updateRoomSql, room.getRoomName(), room.getRoomSize(), room.getRoomId());
 	}
 
 	@Override
 	public void deleteRoom(Integer roomId) {
-		String sql = "delete from room where roomId=?";
-		jdbcTemplate.update(sql, roomId);
+		jdbcTemplate.update(deleteRoomSql, roomId);
 	}
 	
 }
