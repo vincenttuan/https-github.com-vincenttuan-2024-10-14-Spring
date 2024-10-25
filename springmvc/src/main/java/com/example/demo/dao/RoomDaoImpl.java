@@ -25,8 +25,9 @@ public class RoomDaoImpl implements RoomDao {
 
 	@Override
 	public Optional<Room> getRoomById(Integer roomId) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		String sql = "select roomId, roomName, roomSize from room where roomId=?";
+		Room room = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Room.class), roomId);
+		return room == null ? Optional.empty() : Optional.of(room);
 	}
 
 	@Override
