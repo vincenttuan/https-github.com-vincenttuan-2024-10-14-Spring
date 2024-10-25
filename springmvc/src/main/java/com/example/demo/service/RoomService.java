@@ -34,6 +34,7 @@ public class RoomService {
 		if(existingRoom.isPresent()) {
 			throw new RoomAlreadyExistsException("新增失敗: " + roomId + " 會議室已存在");
 		}
+		// 新增 room
 		Room room = new Room(roomId, roomName, roomSize);
 		roomDao.addRoom(room);
 	}
