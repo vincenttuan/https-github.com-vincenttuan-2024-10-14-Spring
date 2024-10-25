@@ -32,8 +32,8 @@ public class RoomDaoImpl implements RoomDao {
 
 	@Override
 	public void addRoom(Room room) {
-		// TODO Auto-generated method stub
-		
+		String sql = "insert into (roomId, roomName, roomSize) values(?, ?, ?)";
+		jdbcTemplate.update(sql, room.getRoomId(), room.getRoomName(), room.getRoomId());
 	}
 
 	@Override
