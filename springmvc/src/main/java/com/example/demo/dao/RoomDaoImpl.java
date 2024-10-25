@@ -44,6 +44,7 @@ public class RoomDaoImpl implements RoomDao {
 	public Optional<Room> getRoomById(Integer roomId) {
 		Room room = null;
 		try {
+			// queryForObject 若找無資料會發生例外
 			room = jdbcTemplate.queryForObject(getRoomByIdSql, new BeanPropertyRowMapper<>(Room.class), roomId);
 		} catch (Exception e) {
 			
