@@ -12,7 +12,8 @@ import org.springframework.stereotype.Repository;
 
 import com.example.demo.bean.Room;
 
-@Repository
+@Repository()
+//@Repository("roomDaoImpl")
 @PropertySource("classpath:sql.properties")
 public class RoomDaoImpl implements RoomDao {
 	
