@@ -38,14 +38,14 @@ public class RoomDaoImpl implements RoomDao {
 
 	@Override
 	public void updateRoom(Integer roomId, Room room) {
-		// TODO Auto-generated method stub
-		
+		String sql = "update room set roomName=?, roomSize=? where roomId=?";
+		jdbcTemplate.update(sql, room.getRoomName(), room.getRoomSize(), room.getRoomId());
 	}
 
 	@Override
 	public void deleteRoom(Integer roomId) {
-		// TODO Auto-generated method stub
-		
+		String sql = "delete from room where roomId=?";
+		jdbcTemplate.update(sql, roomId);
 	}
 	
 	
