@@ -99,6 +99,8 @@ public class BookingController {
 	@GetMapping("/rooms")
 	public String getRooms(Model model, @ModelAttribute Room room) {
 		model.addAttribute("rooms", roomService.getAllRooms());
+		model.addAttribute("actionUri", "/room/add"); // 表單的 action
+		model.addAttribute("actionName", "Add"); // action 狀態名
 		return "booking/room";
 	}
 	
@@ -108,6 +110,8 @@ public class BookingController {
 	public String getRoom(@PathVariable("roomId") Integer roomId, Model model) {
 		model.addAttribute("rooms", roomService.getAllRooms());
 		model.addAttribute("room", roomService.getRoomById(roomId));
+		model.addAttribute("actionUri", "/room/update/" + roomId); // 表單的 action
+		model.addAttribute("actionName", "Update"); // action 狀態名
 		return "booking/room";
 	}
 	
