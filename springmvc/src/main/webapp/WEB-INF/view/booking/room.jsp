@@ -14,15 +14,15 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 	</head>
 	<body style="padding: 15px">
-		<form class="pure-form">
+		<sp:form class="pure-form" modelAttribute="room">
 			<fieldset>
 				<legend>Room Add</legend>
-				Room Id: <input type="number" name="roomId"  /><p />
-				Room Name: <input type="text" name="roomName" /><p />
-				Room Size: <input type="number" name="roomSize" /><p />
+				Room Id: <sp:input type="number" path="roomId"  /><p />
+				Room Name: <sp:input type="text" path="roomName" /><p />
+				Room Size: <sp:input type="number" path="roomSize" /><p />
 				<button type="submit" class="pure-button pure-button-primary">Add</button>
 			</fieldset>
-		</form>
+		</sp:form>
 		<div class="pure-form">
 			<fieldset>
 				<legend>Room List</legend>
