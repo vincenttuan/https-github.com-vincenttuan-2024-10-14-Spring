@@ -14,7 +14,7 @@
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css">
 	</head>
 	<body style="padding: 15px">
-		<sp:form class="pure-form" modelAttribute="room" action="/room/add">
+		<sp:form class="pure-form" modelAttribute="room" action="/booking/room/add">
 			<fieldset>
 				<legend>Room Add</legend>
 				Room Id: <sp:input type="number" path="roomId"  /><p />
