@@ -17,7 +17,7 @@
 	<body style="padding: 15px">
 		<sp:form class="pure-form" modelAttribute="room" action="/booking${ actionUri }">
 			<fieldset>
-				<legend>Room ${ actionName }</legend>
+				<legend><a href="/booking/rooms">Room</a> ${ actionName }</legend>
 				Room Id: <sp:input type="number" path="roomId"  /><p />
 				Room Name: <sp:input type="text" path="roomName" /><p />
 				Room Size: <sp:input type="number" path="roomSize" /><p />
