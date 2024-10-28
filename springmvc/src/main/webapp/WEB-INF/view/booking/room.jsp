@@ -15,13 +15,13 @@
 		<link rel="stylesheet" href="/css/buttons.css">
 	</head>
 	<body style="padding: 15px">
-		<sp:form class="pure-form" modelAttribute="room" action="/booking/room/add">
+		<sp:form class="pure-form" modelAttribute="room" action="/booking${ actionUri }">
 			<fieldset>
-				<legend>Room Add</legend>
+				<legend>Room ${ actionName }</legend>
 				Room Id: <sp:input type="number" path="roomId"  /><p />
 				Room Name: <sp:input type="text" path="roomName" /><p />
 				Room Size: <sp:input type="number" path="roomSize" /><p />
-				<button type="submit" class="pure-button pure-button-primary">Add</button>
+				<button type="submit" class="pure-button pure-button-primary">${ actionName }</button>
 			</fieldset>
 		</sp:form>
 		<div class="pure-form">
