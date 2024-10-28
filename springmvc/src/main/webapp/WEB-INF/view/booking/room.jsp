@@ -40,7 +40,7 @@
 								<td>${ room.roomId }</td>
 								<td>${ room.roomName }</td>
 								<td>${ room.roomSize }</td>
-								<td><a href="" class="button-success pure-button">Update</a></td>
+								<td><a href="/booking/room/${ room.roomId }" class="button-success pure-button">Update</a></td>
 								<td><a href="/booking/room/delete/${ room.roomId }" class="button-error pure-button">Delete</a></td>
 							</tr>
 						</c:forEach>
