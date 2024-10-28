@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 import java.util.function.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -95,7 +96,9 @@ public class BookingController {
 	// 路徑: /rooms
 	@GetMapping("/rooms")
 	public String getRooms(Model model) {
+		Room room = new Room(102, "102(M)", new Random().nextInt(100));
 		model.addAttribute("rooms", roomService.getAllRooms());
+		model.addAttribute("room", room);
 		return "booking/room";
 	}
 	
