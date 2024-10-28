@@ -31,6 +31,7 @@
 					<thead>
 						<tr>
 							<th>ID</th><th>Name</th><th>Size</th>
+							<th>Update</th><th>Delete</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -39,6 +40,8 @@
 								<td>${ room.roomId }</td>
 								<td>${ room.roomName }</td>
 								<td>${ room.roomSize }</td>
+								<td><a href="" class="button-success pure-button">Update</a></td>
+								<td><a href="" class="button-error pure-button">Delete</a></td>
 							</tr>
 						</c:forEach>
 					</tbody>
