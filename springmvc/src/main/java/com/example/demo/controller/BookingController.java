@@ -7,6 +7,7 @@ import java.util.function.Predicate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.bean.Room;
@@ -93,9 +94,9 @@ public class BookingController {
 	// 查詢所有會議室
 	// 路徑: /rooms
 	@GetMapping("/rooms")
-	@ResponseBody
-	public String getRooms() {
-		return roomService.getAllRooms().toString();
+	public String getRooms(Model model) {
+		model.addAttribute("rooms", roomService.getAllRooms());
+		return "booking/room";
 	}
 	
 	// 查詢單筆會議室 
