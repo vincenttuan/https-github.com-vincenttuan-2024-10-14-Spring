@@ -105,9 +105,10 @@ public class BookingController {
 	// 查詢單筆會議室 
 	// 路徑: /rooms/1
 	@GetMapping("/room/{roomId}")
-	@ResponseBody
-	public String getRoom(@PathVariable("roomId") Integer roomId) {
-		return roomService.getRoomById(roomId).toString();
+	public String getRoom(@PathVariable("roomId") Integer roomId, Model model) {
+		model.addAttribute("rooms", roomService.getAllRooms());
+		model.addAttribute("room", roomService.getRoomById(roomId));
+		return "booking/room";
 	}
 	
 	// 新增會議室
