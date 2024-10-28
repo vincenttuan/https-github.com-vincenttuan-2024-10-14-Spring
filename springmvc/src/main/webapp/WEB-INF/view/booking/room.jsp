@@ -17,7 +17,7 @@
 		<form class="pure-form">
 			<fieldset>
 				<legend>Room Add</legend>
-				Room Id: <input type="number" name="roomId" /><p />
+				Room Id: <input type="number" name="roomId"  /><p />
 				Room Name: <input type="text" name="roomName" /><p />
 				Room Size: <input type="number" name="roomSize" /><p />
 				<button type="submit" class="pure-button pure-button-primary">Add</button>
