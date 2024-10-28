@@ -19,6 +19,7 @@ import com.example.demo.service.RoomService;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -95,10 +96,8 @@ public class BookingController {
 	// 查詢所有會議室
 	// 路徑: /rooms
 	@GetMapping("/rooms")
-	public String getRooms(Model model) {
-		Room room = new Room(102, "102(M)", new Random().nextInt(100));
+	public String getRooms(Model model, @ModelAttribute Room room) {
 		model.addAttribute("rooms", roomService.getAllRooms());
-		model.addAttribute("room", room);
 		return "booking/room";
 	}
 	
