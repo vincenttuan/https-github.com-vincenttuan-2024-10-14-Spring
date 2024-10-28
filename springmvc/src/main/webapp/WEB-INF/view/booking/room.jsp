@@ -20,13 +20,13 @@
 						</tr>
 					</thead>
 					<tbody>
-						<c:foreach var="room" items="${ rooms }">
+						<c:forEach var="room" items="${ rooms }">
 							<tr>
 								<td>${ room.roomId }</td>
 								<td>${ room.roomName }</td>
 								<td>${ room.roomSize }</td>
 							</tr>
-						</c:foreach>
+						</c:forEach>
 					</tbody>
 				</table>
 			</fieldset>
