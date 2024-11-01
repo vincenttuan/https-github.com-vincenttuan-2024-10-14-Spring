@@ -1,13 +1,18 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.bean.Room;
+import com.example.demo.exception.RoomAlreadyExistsException;
+import com.example.demo.exception.RoomException;
+import com.example.demo.exception.RoomNotFoundException;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.RoomService;
 
@@ -35,6 +40,13 @@ public class BookingRestController {
 	public ResponseEntity<ApiResponse<Room>> getRoom(@PathVariable("roomId") Integer roomId) {
 		Room room = roomService.getRoomById(roomId);
 		return ResponseEntity.ok(ApiResponse.success("查詢成功", room));
+	}
+	
+	// 錯誤處理: 補捉 RoomNotFoundException, RoomAlreadyExistsException
+	@ExceptionHandler({RoomNotFoundException.class, RoomAlreadyExistsException.class})
+	public ResponseEntity<ApiResponse<Void>> handleException(RoomException e) {
+		HttpStatus httpStatus = e instanceof RoomNotFoundException ? HttpStatus.NOT_FOUND : HttpStatus.CONFLICT;
+		return ResponseEntity.status(httpStatus).body(ApiResponse.error(httpStatus.value(), e.getMessage()));
 	}
 	
 }
