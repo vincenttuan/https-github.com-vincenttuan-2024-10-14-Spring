@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -67,6 +68,11 @@ public class BookingRestController {
 		//return ResponseEntity.ok(ApiResponse.success("修改成功", null));
 	}
 	
+	@DeleteMapping(value = {"/room/{roomId}", "/room/delete/{roomId}"})
+	public ResponseEntity<ApiResponse<Void>> deleteRoom(@PathVariable Integer roomId) {
+		roomService.deleteRoom(roomId);
+		return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success("刪除成功", null));
+	}
 	
 	// 錯誤處理: 補捉 RoomNotFoundException, RoomAlreadyExistsException
 	@ExceptionHandler({RoomNotFoundException.class, RoomAlreadyExistsException.class})
