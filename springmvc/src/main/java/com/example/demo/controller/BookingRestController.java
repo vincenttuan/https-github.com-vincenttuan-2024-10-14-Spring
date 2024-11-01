@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,6 +43,14 @@ public class BookingRestController {
 		Room room = roomService.getRoomById(roomId);
 		return ResponseEntity.ok(ApiResponse.success("查詢成功", room));
 	}
+	
+	@GetMapping(value = {"/room", "/rooms"})
+	public ResponseEntity<ApiResponse<List<Room>>> getRooms() {
+		List<Room> rooms = roomService.getAllRooms();
+		String message = rooms.isEmpty() ? "查無任何會議室" : "查詢所有會議室成功";
+		return ResponseEntity.ok(ApiResponse.success(message, rooms));
+	}
+	
 	
 	// 錯誤處理: 補捉 RoomNotFoundException, RoomAlreadyExistsException
 	@ExceptionHandler({RoomNotFoundException.class, RoomAlreadyExistsException.class})
