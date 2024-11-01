@@ -37,6 +37,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 	 |  101   |  101(S)   |     10     |
 	 |  102   |  102(M)   |     25     |
 	 +--------+-----------+------------+
+ 
+ * 功能說明:
+ * 查詢所有會議室 GET /booking/rooms
+ * 查詢單筆會議室 GET /booking/room/{roomId}
+ * 新增會議室 POST /booking/room/add
+ * 修改會議室 POST /booking/room/update/{roomId}
+ * 刪除單筆會議室 GET /booking/room/delete/{roomId}	
+
 
 	 * 預約紀錄(BookingRoom)
 	 +-----------+--------+----------+-------------+
