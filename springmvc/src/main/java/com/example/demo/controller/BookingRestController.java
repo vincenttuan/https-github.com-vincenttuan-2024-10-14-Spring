@@ -1,12 +1,14 @@
 package com.example.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.bean.Room;
+import com.example.demo.response.ApiResponse;
 import com.example.demo.service.RoomService;
 
 /**
@@ -30,9 +32,9 @@ public class BookingRestController {
 	private RoomService roomService;
 	
 	@GetMapping("/room/{roomId}")
-	public String getRoom(@PathVariable("roomId") Integer roomId) {
+	public ResponseEntity<ApiResponse<Room>> getRoom(@PathVariable("roomId") Integer roomId) {
 		Room room = roomService.getRoomById(roomId);
-		return room.toString();
+		return ResponseEntity.ok(ApiResponse.success("查詢成功", room));
 	}
 	
 }
