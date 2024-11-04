@@ -33,9 +33,10 @@ public class RoomService {
 					
 	}
 	
-	public Room getRoomById(Integer roomId) {
-		return roomDao.getRoomById(roomId)
+	public RoomDto getRoomById(Integer roomId) {
+		Room room = roomDao.getRoomById(roomId)
 					  .orElseThrow(() -> new RoomNotFoundException("找不到會議室: roomId " + roomId));
+		return convertToDto(room);
 	}
 	
 	public void addRoom(Room room) {
