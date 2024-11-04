@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.exception.RoomAlreadyExistsException;
 import com.example.demo.exception.RoomException;
 import com.example.demo.exception.RoomNotFoundException;
-import com.example.demo.model.entity.Room;
+import com.example.demo.model.dto.RoomDto;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.RoomService;
 
@@ -43,27 +43,27 @@ public class BookingRestController {
 	private RoomService roomService;
 	
 	@GetMapping("/room/{roomId}")
-	public ResponseEntity<ApiResponse<Room>> getRoom(@PathVariable("roomId") Integer roomId) {
-		Room room = roomService.getRoomById(roomId);
-		return ResponseEntity.ok(ApiResponse.success("查詢成功", room));
+	public ResponseEntity<ApiResponse<RoomDto>> getRoom(@PathVariable("roomId") Integer roomId) {
+		RoomDto roomDto = roomService.getRoomById(roomId);
+		return ResponseEntity.ok(ApiResponse.success("查詢成功", roomDto));
 	}
 	
 	@GetMapping(value = {"/room", "/rooms"})
-	public ResponseEntity<ApiResponse<List<Room>>> getRooms() {
-		List<Room> rooms = roomService.getAllRooms();
-		String message = rooms.isEmpty() ? "查無任何會議室" : "查詢所有會議室成功";
-		return ResponseEntity.ok(ApiResponse.success(message, rooms));
+	public ResponseEntity<ApiResponse<List<RoomDto>>> getRooms() {
+		List<RoomDto> roomDtos = roomService.getAllRooms();
+		String message = roomDtos.isEmpty() ? "查無任何會議室" : "查詢所有會議室成功";
+		return ResponseEntity.ok(ApiResponse.success(message, roomDtos));
 	}
 	
 	@PostMapping(value = {"/room", "/room/add"})
-	public ResponseEntity<ApiResponse<Void>> addRoom(@RequestBody Room room) {
-		roomService.addRoom(room);
+	public ResponseEntity<ApiResponse<Void>> addRoom(@RequestBody RoomDto roomDto) {
+		roomService.addRoom(roomDto);
 		return ResponseEntity.status(HttpStatus.CREATED).body(ApiResponse.success("新增成功", null));
 	}
 	
 	@PutMapping(value = {"/room/{roomId}", "/room/update/{roomId}"})
-	public ResponseEntity<ApiResponse<Void>> updateRoom(@PathVariable Integer roomId, @RequestBody Room room) {
-		roomService.updateRoom(roomId, room);
+	public ResponseEntity<ApiResponse<Void>> updateRoom(@PathVariable Integer roomId, @RequestBody RoomDto roomDto) {
+		roomService.updateRoom(roomId, roomDto);
 		return ResponseEntity.status(HttpStatus.OK).body(ApiResponse.success("修改成功", null));
 		//return ResponseEntity.ok(ApiResponse.success("修改成功", null));
 	}
