@@ -56,18 +56,22 @@ const addRoom = async() => {
 	const roomDto = {roomId, roomName, roomSize};
 	console.log(roomDto);
 	
-	// 將 roomDto 傳送到後端
-	const response = await fetch('http://localhost:8080/booking/rest/room', {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(roomDto) // 要將 Dto 物件轉字串形式
-	});
-	
-	const apiResponse = await response.json();
-	console.log(apiResponse);
-	resultMessage.textContent = apiResponse.message;
+	try {
+		// 將 roomDto 傳送到後端
+		const response = await fetch('http://localhost:8080/booking/rest/room', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(roomDto) // 要將 Dto 物件轉字串形式
+		});
+		
+		const apiResponse = await response.json();
+		console.log(apiResponse);
+		resultMessage.textContent = apiResponse.message;
+	} catch(e) {
+		resultMessage.textContent = e;
+	}
 };
 
 // 調用 fetchRooms
