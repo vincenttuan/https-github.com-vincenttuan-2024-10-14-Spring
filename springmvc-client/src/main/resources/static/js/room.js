@@ -7,7 +7,10 @@ const roomNameInput = document.getElementById('roomName'); // roomName
 const roomSizeInput = document.getElementById('roomSize'); // roomSize
 
 // 取得所有房間的資料並顯示在列表中 
-const fetchRooms = async() => {
+const fetchRooms = async(cleanup) => {
+	if(cleanup) {
+		roomList.innerHTML = '';
+	}
 	const response = await fetch('http://localhost:8080/booking/rest/rooms');
 	const apiResponse = await response.json();
 	console.log(apiResponse);
@@ -72,7 +75,7 @@ const addRoom = async() => {
 		// 判斷 status 是否是 200
 		if(apiResponse.status == 200) {
 			// 重新查詢 rooms
-			fetchRooms();
+			fetchRooms(true); // true 畫面要清空
 			// 新增表單畫面清空
 			roomIdInput.value = '';
 			roomNameInput.value = '';
