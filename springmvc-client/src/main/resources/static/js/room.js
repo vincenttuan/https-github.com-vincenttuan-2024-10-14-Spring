@@ -67,7 +67,7 @@ const addRoom = async() => {
 	
 	const apiResponse = await response.json();
 	console.log(apiResponse);
-	
+	resultMessage.textContent = apiResponse.message;
 };
 
 // 調用 fetchRooms
