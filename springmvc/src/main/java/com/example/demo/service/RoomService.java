@@ -39,8 +39,8 @@ public class RoomService {
 		return convertToDto(room);
 	}
 	
-	public void addRoom(Room room) {
-		addRoom(room.getRoomId(), room.getRoomName(), room.getRoomSize());
+	public void addRoom(RoomDto roomDto) {
+		addRoom(roomDto.getRoomId(), roomDto.getRoomName(), roomDto.getRoomSize());
 	}
 	
 	public void addRoom(Integer roomId, String roomName, Integer roomSize) {
