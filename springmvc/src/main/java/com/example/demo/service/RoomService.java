@@ -3,6 +3,7 @@ package com.example.demo.service;
 import java.util.List;
 import java.util.Optional;
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dao.RoomDao;
 import com.example.demo.exception.RoomAlreadyExistsException;
 import com.example.demo.exception.RoomNotFoundException;
+import com.example.demo.model.dto.RoomDto;
 import com.example.demo.model.entity.Room;
 
 @Service
@@ -18,6 +20,9 @@ public class RoomService {
 	@Autowired
 	//@Qualifier("roomDaoImpl")
 	private RoomDao roomDao;
+	
+	@Autowired
+	private ModelMapper modelMapper;
 	
 	public List<Room> getAllRooms() {
 		return roomDao.findAllRooms();
@@ -67,4 +72,15 @@ public class RoomService {
 		// 刪除 room
 		roomDao.deleteRoom(roomId);
 	}
+	
+	// Entity 轉 Dto
+	private RoomDto convertToDto(Room room) {
+		return modelMapper.map(room, RoomDto.class);
+	}
+	
+	// Dto 轉 Entity
+	private Room convertToEntity(RoomDto roomDto) {
+		return modelMapper.map(roomDto, Room.class);
+	}
+	
 }
