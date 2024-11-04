@@ -1,6 +1,10 @@
 // 選取 HTML DOM 元素
 const roomList = document.getElementById('roomList'); // 房間列表
 const resultMessage = document.getElementById('resultMessage'); // 回應訊息
+// 新增房間 HTML DOM 元素
+const roomId = document.getElementById('roomId'); // roomId
+const roomName = document.getElementById('roomName'); // 回應訊息
+const roomSize = document.getElementById('roomSize'); // roomSize
 
 // 取得所有房間的資料並顯示在列表中 
 const fetchRooms = async() => {
