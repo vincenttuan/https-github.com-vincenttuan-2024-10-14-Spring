@@ -15,6 +15,21 @@
 	    <h2>Room List</h2>
 	    <ul id="roomList"></ul>
 	    
+	    <!-- 結果回傳 -->
+	    <div id="resultMessage"></div>
+	    
+	    <!-- 新增房間 -->
+	    <h2>Room Add</h2>
+	    <div>
+	    	會議室ID: <input type="text" id="roomId" placeholder="請輸入會議室ID" /> <p />
+	    	會議室名稱: <input type="text" id="roomName" placeholder="請輸入會議室名稱" /> <p />
+	    	會議室人數: <input type="text" id="roomSize" placeholder="請輸入會議室人數" /> <p />
+	    	<button onclick="addRoom()">新增房間</button>
+	    </div>
+	    
+	    
+	    
+	    
 	    <!-- 引用 js -->
 		<script type="text/javascript" src="/js/room.js?" + Math.random() + ""></script>
 	</body>
