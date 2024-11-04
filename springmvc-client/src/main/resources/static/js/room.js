@@ -12,7 +12,14 @@ const fetchRooms = async() => {
 // 顯示房間列表
 const displayRooms = (rooms) => {
 	console.log(rooms);
-	roomList.innerHTML = JSON.stringify(rooms);
+	//roomList.innerHTML = JSON.stringify(rooms);
+	rooms.forEach(room => {
+		// 建立子元素
+		const listItem = document.createElement('li');
+		listItem.textContent = `編號: ${room.roomId} 名稱: ${room.roomName} 人數: ${room.roomSize}`;
+		// 新增子元素
+		roomList.appendChild(listItem);
+	});
 };
 
 // 調用 fetchRooms
