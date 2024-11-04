@@ -1,4 +1,4 @@
-package com.example.demo.bean;
+package com.example.demo.model;
 
 // 根據路徑: /person?name=John&age=18&score=90.5&pass=true 來定義物件屬性
 public class Person {

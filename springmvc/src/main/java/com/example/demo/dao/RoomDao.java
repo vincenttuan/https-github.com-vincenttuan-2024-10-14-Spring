@@ -3,7 +3,7 @@ package com.example.demo.dao;
 import java.util.List;
 import java.util.Optional;
 
-import com.example.demo.bean.Room;
+import com.example.demo.model.Room;
 
 public interface RoomDao {
 	List<Room> findAllRooms();

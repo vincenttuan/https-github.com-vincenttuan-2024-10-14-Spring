@@ -7,10 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import com.example.demo.bean.Room;
 import com.example.demo.dao.RoomDao;
 import com.example.demo.exception.RoomAlreadyExistsException;
 import com.example.demo.exception.RoomNotFoundException;
+import com.example.demo.model.Room;
 
 @Service
 public class RoomService {

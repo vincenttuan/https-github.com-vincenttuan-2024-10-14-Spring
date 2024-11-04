@@ -11,10 +11,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.bean.Room;
 import com.example.demo.exception.RoomAlreadyExistsException;
 import com.example.demo.exception.RoomException;
 import com.example.demo.exception.RoomNotFoundException;
+import com.example.demo.model.Room;
 import com.example.demo.service.RoomService;
 
 import org.springframework.web.bind.annotation.ExceptionHandler;

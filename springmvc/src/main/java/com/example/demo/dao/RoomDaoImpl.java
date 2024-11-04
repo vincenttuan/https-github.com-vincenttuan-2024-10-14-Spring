@@ -10,7 +10,7 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.example.demo.bean.Room;
+import com.example.demo.model.Room;
 
 @Repository()
 //@Repository("roomDaoImpl")
