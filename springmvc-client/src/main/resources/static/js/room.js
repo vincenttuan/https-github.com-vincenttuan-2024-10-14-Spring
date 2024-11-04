@@ -27,7 +27,7 @@ const displayRooms = (rooms) => {
 		const updateButton = document.createElement('button');
 		updateButton.textContent = '修改';
 		listItem.appendChild(updateButton); // 在 listItem 後增加一個 button
-				
+		
 		// 新增子元素
 		roomList.appendChild(listItem);
 	});
