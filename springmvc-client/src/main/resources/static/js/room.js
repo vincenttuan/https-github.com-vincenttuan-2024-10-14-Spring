@@ -12,7 +12,7 @@ const fetchRooms = async() => {
 // 顯示房間列表
 const displayRooms = (rooms) => {
 	console.log(rooms);
-	roomList.innerHTML = rooms;
+	roomList.innerHTML = JSON.stringify(rooms);
 };
 
 // 調用 fetchRooms
