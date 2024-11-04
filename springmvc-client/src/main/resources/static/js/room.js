@@ -1,3 +1,6 @@
+// 選取 HTML DOM 元素
+const roomList = document.getElementById('roomList'); // 房間列表
+
 // 取得所有房間的資料並顯示在列表中 
 const fetchRooms = async() => {
 	const response = await fetch('http://localhost:8080/booking/rest/rooms');
@@ -9,6 +12,7 @@ const fetchRooms = async() => {
 // 顯示房間列表
 const displayRooms = (rooms) => {
 	console.log(rooms);
+	roomList.innerHTML = rooms;
 };
 
 // 調用 fetchRooms
