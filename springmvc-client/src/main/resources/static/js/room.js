@@ -2,9 +2,9 @@
 const roomList = document.getElementById('roomList'); // 房間列表
 const resultMessage = document.getElementById('resultMessage'); // 回應訊息
 // 新增房間 HTML DOM 元素
-const roomId = document.getElementById('roomId'); // roomId
-const roomName = document.getElementById('roomName'); // roomName
-const roomSize = document.getElementById('roomSize'); // roomSize
+const roomIdInput = document.getElementById('roomId'); // roomId
+const roomNameInput = document.getElementById('roomName'); // roomName
+const roomSizeInput = document.getElementById('roomSize'); // roomSize
 
 // 取得所有房間的資料並顯示在列表中 
 const fetchRooms = async() => {
@@ -37,6 +37,18 @@ const displayRooms = (rooms) => {
 		// 新增子元素
 		roomList.appendChild(listItem);
 	});
+};
+
+// 新增房間
+const addRoom = async() => {
+	// 取得新增會議室表單的輸入內容
+	const roomId = roomIdInput.value;
+	const roomName = roomNameInput.value;
+	const roomSize = roomSizeInput.value;
+	
+	const roomDto = {roomId, roomName, roomSize};
+	console.log(roomDto);
+	
 };
 
 // 調用 fetchRooms
