@@ -54,7 +54,7 @@ public class RoomDaoImpl implements RoomDao {
 
 	@Override
 	public void addRoom(Room room) {
-		jdbcTemplate.update(addRoomSql, room.getRoomId(), room.getRoomName(), room.getRoomId());
+		jdbcTemplate.update(addRoomSql, room.getRoomId(), room.getRoomName(), room.getRoomSize());
 	}
 
 	@Override
