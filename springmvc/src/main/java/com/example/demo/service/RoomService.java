@@ -54,8 +54,8 @@ public class RoomService {
 		roomDao.addRoom(room);
 	}
 	
-	public void updateRoom(Integer roomId, Room room) {
-		updateRoom(roomId, room.getRoomName(), room.getRoomSize());
+	public void updateRoom(Integer roomId, RoomDto roomDto) {
+		updateRoom(roomId, roomDto.getRoomName(), roomDto.getRoomSize());
 	}
 	
 	public void updateRoom(Integer roomId, String roomName, Integer roomSize) {
