@@ -69,6 +69,16 @@ const addRoom = async() => {
 		const apiResponse = await response.json();
 		console.log(apiResponse);
 		resultMessage.textContent = apiResponse.message;
+		// 判斷 status 是否是 200
+		if(apiResponse.status == 200) {
+			// 重新查詢 rooms
+			fetchRooms();
+			// 新增表單畫面清空
+			roomIdInput.value = '';
+			roomNameInput.value = '';
+			roomSizeInput.value = '';
+		}
+		
 	} catch(e) {
 		resultMessage.textContent = e;
 	}
