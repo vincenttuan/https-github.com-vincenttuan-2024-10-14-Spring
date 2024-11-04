@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +25,12 @@ public class RoomService {
 	@Autowired
 	private ModelMapper modelMapper;
 	
-	public List<Room> getAllRooms() {
-		return roomDao.findAllRooms();
+	public List<RoomDto> getAllRooms() {
+		return roomDao.findAllRooms()  // List<Room>
+					  .stream()
+					  .map(this::convertToDto)  // Room 轉 RoomDto
+					  .collect(Collectors.toList()); // 收集起來
+					
 	}
 	
 	public Room getRoomById(Integer roomId) {
