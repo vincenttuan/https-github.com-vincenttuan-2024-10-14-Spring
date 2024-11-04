@@ -45,6 +45,13 @@ const addRoom = async() => {
 	const roomId = roomIdInput.value;
 	const roomName = roomNameInput.value;
 	const roomSize = roomSizeInput.value;
+	
+	// 檢查資料
+	if(!roomId || !roomName || !roomSize) {
+		resultMessage.textContent = '請輸入會議室 ID, 名稱與人數';
+		return;
+	}
+	
 	// 組合成一個 roomDto 物件
 	const roomDto = {roomId, roomName, roomSize};
 	console.log(roomDto);
