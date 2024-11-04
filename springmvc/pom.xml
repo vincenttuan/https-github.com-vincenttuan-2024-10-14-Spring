@@ -31,6 +31,13 @@
 	</properties>
 	<dependencies>
 		
+		<!-- modelmapper -->
+		<dependency>
+		    <groupId>org.modelmapper</groupId>
+		    <artifactId>modelmapper</artifactId>
+		    <version>3.2.1</version>
+		</dependency>
+		
 		<!-- sprintboot jdbctemplate -->
 		<dependency>
 		    <groupId>org.springframework.boot</groupId>
