@@ -45,7 +45,7 @@ const addRoom = async() => {
 	const roomId = roomIdInput.value;
 	const roomName = roomNameInput.value;
 	const roomSize = roomSizeInput.value;
-	
+	// 組合成一個 roomDto 物件
 	const roomDto = {roomId, roomName, roomSize};
 	console.log(roomDto);
 	
