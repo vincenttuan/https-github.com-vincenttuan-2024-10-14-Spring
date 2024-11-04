@@ -9,7 +9,7 @@ const fetchRooms = async() => {
 	displayRooms(apiResponse.data)
 };
 
-// 顯示房間列表
+// 顯示房間列表, 並為每個會議室增加[刪除]與[修改]按鈕
 const displayRooms = (rooms) => {
 	console.log(rooms);
 	//roomList.innerHTML = JSON.stringify(rooms);
@@ -17,6 +17,17 @@ const displayRooms = (rooms) => {
 		// 建立子元素
 		const listItem = document.createElement('li');
 		listItem.textContent = `編號: ${room.roomId} 名稱: ${room.roomName} 人數: ${room.roomSize}`;
+		
+		// 建立刪除按鈕
+		const deleteButton = document.createElement('button');
+		deleteButton.textContent = '刪除';
+		listItem.appendChild(deleteButton); // 在 listItem 後增加一個 button
+		
+		// 建立修改按鈕
+		const updateButton = document.createElement('button');
+		deleteButton.textContent = '修改';
+		listItem.appendChild(updateButton); // 在 listItem 後增加一個 button
+				
 		// 新增子元素
 		roomList.appendChild(listItem);
 	});
