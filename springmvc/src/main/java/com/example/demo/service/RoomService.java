@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dao.RoomDao;
 import com.example.demo.exception.RoomAlreadyExistsException;
 import com.example.demo.exception.RoomNotFoundException;
-import com.example.demo.model.Room;
+import com.example.demo.model.entity.Room;
 
 @Service
 public class RoomService {

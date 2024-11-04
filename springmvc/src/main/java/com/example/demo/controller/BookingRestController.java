@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.example.demo.exception.RoomAlreadyExistsException;
 import com.example.demo.exception.RoomException;
 import com.example.demo.exception.RoomNotFoundException;
-import com.example.demo.model.Room;
+import com.example.demo.model.entity.Room;
 import com.example.demo.response.ApiResponse;
 import com.example.demo.service.RoomService;
 

@@ -1,4 +1,4 @@
-package com.example.demo.model;
+package com.example.demo.model.entity;
 
 // 根據路徑: /person?name=John&age=18&score=90.5&pass=true 來定義物件屬性
 public class Person {

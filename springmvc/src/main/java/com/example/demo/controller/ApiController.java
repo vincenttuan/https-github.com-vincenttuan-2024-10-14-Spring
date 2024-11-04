@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.demo.model.Person;
+import com.example.demo.model.entity.Person;
 
 // 了解各種不同URL與參數的傳遞接收 
 @Controller
