@@ -29,7 +29,14 @@
 	    
 	    <!-- 修改房間小視窗(Modal) -->
 	    <div class="modal-overlay" id="editModal">
-	    	
+	    	<div id="modal">
+	    		<span class="close-btn" onclick="closeModal()"></span>
+	    		<h2>Room Edit</h2>
+	    		ID: <input type="text" id="editRoomId" style="width: 50px" readonly />
+	    		名稱: <input type="text" id="editRoomName" style="width: 100px" /> 
+	    		人數: <input type="number" id="editRoomSize" style="width: 50px" />
+	    		<button onclick="editRoom()">修改房間</button> 
+	    	</div>
 	    </div>
 	    
 	    <!-- 引用 js -->
