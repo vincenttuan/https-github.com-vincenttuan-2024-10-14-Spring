@@ -42,6 +42,7 @@ const displayRooms = (rooms) => {
 		// 建立修改按鈕
 		const updateButton = document.createElement('button');
 		updateButton.textContent = '修改';
+		updateButton.onclick = () => openModal(room.roomId);
 		listItem.appendChild(updateButton); // 在 listItem 後增加一個 button
 		
 		// 新增子元素
