@@ -46,6 +46,19 @@ const displayRooms = (rooms) => {
 // 刪除房間
 const deleteRoom = async (roomId) => {
 	console.log('delete roomId:', roomId);
+	try {
+		//const response = await fetch('http://localhost:8080/booking/rest/room/' + roomId, {method: 'DELETE'});
+		const response = await fetch(`http://localhost:8080/booking/rest/room/${roomId}`, {method: 'DELETE'});
+		const apiResponse = await response.json();
+		console.log('apiResponse:', apiResponse);
+		
+		if(apiResponse.status == 200) {
+			fetchRooms(); // 刪除成功, 立即重新查詢房間列表
+		}
+		
+	} catch(e) {
+		resultMessage.textContent = e;
+	}
 };
 
 // 新增房間
