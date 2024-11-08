@@ -88,7 +88,10 @@ const editRoom = async() => {
 		
 	} catch(e) {
 		resultMessage.textContent = e;
+	} finally {
+		closeModal();
 	}
+	
 	
 };
 
