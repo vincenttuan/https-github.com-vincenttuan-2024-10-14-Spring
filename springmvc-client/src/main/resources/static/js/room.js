@@ -68,7 +68,7 @@ const closeModal = () => {
 const editRoom = async() => {
 	const uptData = {
 		roomName: editRoomNameInput.value,
-		roomSize: editRoomNameInput.size
+		roomSize: editRoomSizeInput.value
 	};
 	
 	try {
