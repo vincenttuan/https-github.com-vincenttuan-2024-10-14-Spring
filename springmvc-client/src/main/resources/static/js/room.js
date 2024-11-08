@@ -53,7 +53,7 @@ const deleteRoom = async (roomId) => {
 		console.log('apiResponse:', apiResponse);
 		
 		if(apiResponse.status == 200) {
-			fetchRooms(); // 刪除成功, 立即重新查詢房間列表
+			fetchRooms(true); // 刪除成功, 立即重新查詢房間列表
 		}
 		
 	} catch(e) {
