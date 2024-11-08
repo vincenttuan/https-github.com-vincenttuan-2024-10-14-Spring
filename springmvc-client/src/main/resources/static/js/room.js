@@ -30,6 +30,7 @@ const displayRooms = (rooms) => {
 		// 建立刪除按鈕
 		const deleteButton = document.createElement('button');
 		deleteButton.textContent = '刪除';
+		deleteButton.onclick = () => deleteRoom(room.roomId);
 		listItem.appendChild(deleteButton); // 在 listItem 後增加一個 button
 		
 		// 建立修改按鈕
@@ -40,6 +41,11 @@ const displayRooms = (rooms) => {
 		// 新增子元素
 		roomList.appendChild(listItem);
 	});
+};
+
+// 刪除房間
+const deleteRoom = async (roomId) => {
+	console.log('delete roomId:', roomId);
 };
 
 // 新增房間
