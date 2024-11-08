@@ -65,7 +65,32 @@ const closeModal = () => {
 };
 
 // 執行修改房間程序
-
+const editRoom = async() => {
+	const uptData = {
+		roomName: editRoomNameInput.value,
+		roomSize: editRoomNameInput.size
+	};
+	
+	try {
+		const roomId = editRoomIdInput.value;
+		const response = await fetch(`http://localhost:8080/booking/rest/room/${roomId}`, {
+			method: 'PUT',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(uptData)
+		});
+		const apiResponse = await response.json();
+		if(apiResponse.status == 200) {
+			fetchRooms(true); // 刪除成功, 立即重新查詢房間列表
+		} 
+		resultMessage.textContent = apiResponse.message;
+		
+	} catch(e) {
+		resultMessage.textContent = e;
+	}
+	
+};
 
 
 
@@ -81,6 +106,7 @@ const deleteRoom = async (roomId) => {
 		if(apiResponse.status == 200) {
 			fetchRooms(true); // 刪除成功, 立即重新查詢房間列表
 		}
+		resultMessage.textContent = apiResponse.message;
 		
 	} catch(e) {
 		resultMessage.textContent = e;
