@@ -90,9 +90,7 @@ const editRoom = async() => {
 		resultMessage.textContent = e;
 	} finally {
 		closeModal();
-	}
-	
-	
+	}	
 };
 
 
