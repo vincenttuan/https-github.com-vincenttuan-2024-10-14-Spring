@@ -6,6 +6,12 @@ const roomIdInput = document.getElementById('roomId'); // roomId
 const roomNameInput = document.getElementById('roomName'); // roomName
 const roomSizeInput = document.getElementById('roomSize'); // roomSize
 
+// 修改房間 HTML DOM 元素
+const editRoomIdInput = document.getElementById('editRoomId');
+const editRoomNameInput = document.getElementById('editRoomName');
+const editRoomSizeInput = document.getElementById('editRoomSize');
+const editModal = document.getElementById('editModal');
+
 // 取得所有房間的資料並顯示在列表中 
 const fetchRooms = async(cleanup) => {
 	if(cleanup) {
@@ -42,6 +48,25 @@ const displayRooms = (rooms) => {
 		roomList.appendChild(listItem);
 	});
 };
+
+// 開啟修改房間視窗
+const openModal = (room) => {
+	console.log('開啟修改房間視窗, 修改前:', room);
+	editRoomIdInput.value = room.roomId;
+	editRoomNameInput.value = room.roomName;
+	editRoomSizeInput.value = room.roomSize;
+	editModal.style.display = 'flex';
+};
+
+// 關閉修改房間視窗
+const closeModal = () => {
+	editModal.style.display = 'none';
+};
+
+// 執行修改房間程序
+
+
+
 
 // 刪除房間
 const deleteRoom = async (roomId) => {
