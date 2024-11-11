@@ -31,16 +31,24 @@ const MessageList = ({messages}) => {
       <ul>
         <li>{messages}</li>
       </ul>
+      <hr />
+      <ul>
+        {
+          messages.map((msg, index) => (
+            <li key={index}>{index} - {msg}</li>
+          ))
+        }
+      </ul>
     </div>
   );
 };
 
 
 function App() {
-  const [messages, setMessages] = useState('');
+  const [messages, setMessages] = useState([]);
 
   const addMessage = (newMessage) => {
-    setMessages([newMessage]);
+    setMessages([...messages, newMessage]);
   };
 
   return (
