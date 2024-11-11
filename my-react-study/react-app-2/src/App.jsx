@@ -11,10 +11,21 @@ function App() {
     setMessages([...messages, newMessage]);
   };
 
+  const deleteMessage = (indexToDelete) => {
+    console.log(indexToDelete);
+    setMessages(messages.filter((_, index) => index !== indexToDelete));
+    /*
+    setMessages(messages.filter((msg, index) => {
+      console.log('刪除:', msg);
+      return index !== indexToDelete
+    }));
+    */
+  };
+
   return (
     <>
       <MessageForm onAddMessage={addMessage} />
-      <MessageList messages={messages} />
+      <MessageList messages={messages} onDeleteMessage={deleteMessage} />
     </>
   )
 }

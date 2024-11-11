@@ -1,7 +1,7 @@
 import { useState } from 'react'
 
 // Message list 元件, 用來顯示歷史訊息
-const MessageList = ({messages}) => {
+const MessageList = ({messages, onDeleteMessage}) => {
     return (
       <div>
         <h2>Message List</h2>
@@ -12,7 +12,10 @@ const MessageList = ({messages}) => {
         <ul>
           {
             messages.map((msg, index) => (
-              <li key={index}>{index} - {msg}</li>
+              <li key={index}>
+                {index} - {msg}
+                <button onClick={() => onDeleteMessage(index)}>刪除</button>
+              </li>
             ))
           }
         </ul>

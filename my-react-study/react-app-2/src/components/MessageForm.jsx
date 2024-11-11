@@ -20,4 +20,4 @@ const MessageForm = ({onAddMessage}) => {
     );
   };
 
-  export default MessageForm;
+export default MessageForm;
