@@ -13,11 +13,11 @@ public class ScoreController {
 	public String getScores() {
 		return """
 				[
-			        {id: 1, name: 'Alice', score: 100},
-			        {id: 2, name: 'Bob', score: 55},
-			        {id: 3, name: 'John', score: 80},
-			        {id: 4, name: 'Mary', score: 40},
-			        {id: 5, name: 'cha', score: 70}
+			        {"id": 1, "name": "Alice", "score": 100},
+			        {"id": 2, "name": "Bob", "score": 55},
+			        {"id": 3, "name": "John", "score": 80},
+			        {"id": 4, "name": "Mary", "score": 40},
+			        {"id": 5, "name": "cha", "score": 70}
 			    ]
 				""".trim();
 	}
