@@ -10,9 +10,15 @@ function App() {
     {id:4, text:'Debug', completed:true}, 
   ]);
 
+  const [myText, setMyText] = useState('');
+
+  const onTextChange = (e) => {
+    setMyText(e.target.value);
+  };
+
   const onAdd = (e) => {
-    const id = 5;
-    const text = '看棒賽';
+    const id = todos.length > 0 ? Math.max(...todos.map((t) => t.id)) + 1 : 1;
+    const text = myText;
     const completed = false;
 
     const todo = {
@@ -23,7 +29,7 @@ function App() {
 
     setTodos([...todos, todo]);
 
-    console.log(todos);
+    console.log(todo);
 
   };
 
@@ -31,7 +37,7 @@ function App() {
     <> 
       <h1>My Todo List 4</h1>
       <div>
-        <input type="text" />
+        <input type="text" value={myText} onChange={onTextChange} />
         <button onClick={onAdd}>Add</button>
       </div>
       <ul>
