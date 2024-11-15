@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import TodoInput from './components/TodoInput';
 import TodoList from './components/TodoList';
 
@@ -52,11 +53,11 @@ function App() {
   };
 
   return (
-    <> 
-      <h1>My Todo List 5</h1>
+    <div className='container mt-5'>
+      <h1 className='text-center'>My Todo List 5</h1>
       <TodoInput myText={myText} onTextChange={onTextChange} onAdd={onAdd} />
       <TodoList todos={todos} toggleCompletion={toggleCompletion} />
-    </>
+    </div> 
   )
 }
 
