@@ -1,6 +1,6 @@
 import React from "react";
 
-const TodoInput = (myText, onTextChange, onAdd) => {
+const TodoInput = ({myText, onTextChange, onAdd}) => {
     return (
         <div>
             <input type="text" value={myText} onChange={onTextChange} />

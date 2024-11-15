@@ -1,6 +1,6 @@
 import React from "react";
 
-const TodoItem = (todo, toggleCompletion) => {
+const TodoItem = ({todo, toggleCompletion}) => {
 
     return (
         <li key={todo.id}>
