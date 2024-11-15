@@ -33,6 +33,12 @@ function App() {
 
   };
 
+  const toggleCompletion = (id) => {
+    setTodos(
+      todos.map((todo) => todo.id == id ? {...todo, completed: !todo.completed} : todo)
+    );
+  };
+
   return (
     <> 
       <h1>My Todo List 4</h1>
@@ -47,7 +53,9 @@ function App() {
               <li key={todo.id}>
                 {todo.id} -
                 {todo.text}
-                <input type="checkbox" checked={todo.completed} />
+                <input type="checkbox" 
+                       checked={todo.completed} 
+                       onChange={() => toggleCompletion(todo.id)} />
               </li>
               )
           })
