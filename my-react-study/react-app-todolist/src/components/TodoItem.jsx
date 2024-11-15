@@ -4,8 +4,12 @@ const TodoItem = ({todo, toggleCompletion}) => {
 
     return (
         <li className="list-group-item d-flex justify-content-between align-items-center">
-            {todo.id} -
-            {todo.text}
+            <div style={{
+                textDecoration: todo.completed ? 'line-through' : 'none',
+            }}>
+                {todo.id} -
+                {todo.text}
+            </div>
             <input type="checkbox" 
                     checked={todo.completed} 
                     onChange={() => toggleCompletion(todo.id)} />
