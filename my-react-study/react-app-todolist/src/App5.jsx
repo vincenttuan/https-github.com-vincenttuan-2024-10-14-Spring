@@ -57,11 +57,15 @@ function App() {
     );
   };
 
+  const deleteTodo = (id) => {
+    setTodos(todos.filter(todo => todo.id !== id))
+  }
+
   return (
     <div className='container mt-5'>
       <h1 className='text-center'>My Todo List 5</h1>
       <TodoInput myText={myText} onTextChange={onTextChange} onAdd={onAdd} />
-      <TodoList todos={todos} toggleCompletion={toggleCompletion} />
+      <TodoList todos={todos} toggleCompletion={toggleCompletion} deleteTodo={deleteTodo} />
       <div className='mt-4'>
         總數: {totalTodos} 已完成: {completedTodos} 未完成: {incompleteTodos}
       </div>
