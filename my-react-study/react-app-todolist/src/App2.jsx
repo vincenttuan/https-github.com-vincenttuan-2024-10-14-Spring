@@ -1,17 +1,24 @@
 import './App.css'
 
 function App() {
+
+  const todos = [
+    '吃早餐', '做運動', '寫程式', 'Debug'
+  ];
+
   return (
     <> 
-      <h1>My Todo List</h1>
+      <h1>My Todo List 2</h1>
       <div>
         <input type="text" />
         <button>Add</button>
       </div>
       <ul>
-        <li>吃早餐</li>
-        <li>做運動</li>
-        <li>寫程式</li>
+        {
+          todos.map((todo, index) => {
+            return (<li key={index}>{todo}</li>)
+          })
+        }
       </ul>
     </>
   )
