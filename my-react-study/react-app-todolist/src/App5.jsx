@@ -25,6 +25,11 @@ function App() {
 
   const [myText, setMyText] = useState('');
 
+  // 計算統計數據
+  const totalTodos = todos.length;
+  const completedTodos = todos.filter((todo) => todo.completed).length;
+  const incompleteTodos = totalTodos - completedTodos;
+
   const onTextChange = (e) => {
     setMyText(e.target.value);
   };
@@ -57,6 +62,9 @@ function App() {
       <h1 className='text-center'>My Todo List 5</h1>
       <TodoInput myText={myText} onTextChange={onTextChange} onAdd={onAdd} />
       <TodoList todos={todos} toggleCompletion={toggleCompletion} />
+      <div className='mt-4'>
+        總數: {totalTodos} 已完成: {completedTodos} 未完成: {incompleteTodos}
+      </div>
     </div> 
   )
 }
