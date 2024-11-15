@@ -7,7 +7,9 @@ const TodoList = ({todos, toggleCompletion}) => {
         <ul className="list-group">
         {
           todos.map((todo) => {
-            return <TodoItem todo={todo} toggleCompletion={toggleCompletion} />
+            return <TodoItem key={todo.id} // 要加入 key 屬性
+                             todo={todo} 
+                            toggleCompletion={toggleCompletion} />
           })
         }
       </ul>
