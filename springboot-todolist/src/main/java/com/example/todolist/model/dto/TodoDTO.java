@@ -1,6 +1,6 @@
 package com.example.todolist.model.dto;
 
-mport lombok.AllArgsConstructor;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
