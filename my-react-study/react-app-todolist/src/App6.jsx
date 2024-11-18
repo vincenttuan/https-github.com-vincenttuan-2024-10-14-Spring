@@ -67,6 +67,7 @@ function App() {
 
   return (
     <div className='container mt-5'>
+      {console.log('diaplay ui')}
       <h1 className='text-center'>My Todo List 5</h1>
       <TodoInput myText={myText} onTextChange={onTextChange} onAdd={onAdd} />
       <TodoList todos={todos} toggleCompletion={toggleCompletion} deleteTodo={deleteTodo} />
