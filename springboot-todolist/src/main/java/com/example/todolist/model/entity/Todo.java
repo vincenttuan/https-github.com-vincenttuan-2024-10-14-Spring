@@ -6,7 +6,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 //@Table(name = "todo") // 預設: 自動建立 table
 public class Todo {
@@ -18,7 +24,7 @@ public class Todo {
 	@Column(name = "text", length = 255, nullable = true, unique = false) // 預設: 可不寫
 	private String text;
 	
-	@Column
+	@Column(name = "completed") // 預設: 可不寫
 	private Boolean completed;
 	
 }
