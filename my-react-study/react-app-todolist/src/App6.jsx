@@ -15,11 +15,6 @@ useEffect(() => {要做的事}, [data1, data2, data3]); // 當 data1, data2, dat
 
 function App() {
 
-  useEffect(() => {
-    console.log('run useEffect');
-  });
-
-
   const [todos, setTodos] = useState([
     {id:1, text:'吃早餐', completed:true}, 
     {id:2, text:'做運動', completed:false}, 
@@ -28,6 +23,11 @@ function App() {
   ]);
 
   const [myText, setMyText] = useState('');
+
+  useEffect(() => {
+    console.log('run useEffect');
+  }, []);
+
 
   // 計算統計數據
   const totalTodos = todos.length;
