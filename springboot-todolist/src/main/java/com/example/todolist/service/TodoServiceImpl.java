@@ -1,6 +1,7 @@
 package com.example.todolist.service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
@@ -43,8 +44,22 @@ public class TodoServiceImpl implements TodoService {
 
 	@Override
 	public TodoDTO updateTodo(TodoDTO todoDTO) throws TodoNotFoundException {
-		// TODO Auto-generated method stub
-		return null;
+		// 確認是否有該筆資料
+		Long id = todoDTO.getId(); // 要改的是哪一筆 ?
+		Optional<Todo> optTodo = todoRepository.findById(id);
+		if(optTodo.isEmpty()) {
+			throw new TodoNotFoundException("查無資料");
+		}
+		
+		Todo todo = optTodo.get();
+		// 將 todoDTO 的內容逐一轉到 todo
+		//todo.setText(todoDTO.getText());
+		//todo.setCompleted(todoDTO.getCompleted());
+		modelMapper.map(todoDTO, todo);
+		// 更新 (下面可以不用做, 因為 todo 是一個受管理的 entity 物件)
+		Todo updatedTodo = todoRepository.save(todo);
+		// 將 Todo 轉 TodoDto
+		return modelMapper.map(updatedTodo, TodoDTO.class);
 	}
 
 	@Override
