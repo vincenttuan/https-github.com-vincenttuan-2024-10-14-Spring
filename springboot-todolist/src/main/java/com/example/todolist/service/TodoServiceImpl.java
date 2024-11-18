@@ -41,7 +41,8 @@ public class TodoServiceImpl implements TodoService {
 		// 將 Todo 轉 TodoDto
 		return modelMapper.map(savedTodo, TodoDTO.class);
 	}
-
+	
+	// 更新代辦事項
 	@Override
 	public TodoDTO updateTodo(TodoDTO todoDTO) throws TodoNotFoundException {
 		// 確認是否有該筆資料
@@ -61,7 +62,8 @@ public class TodoServiceImpl implements TodoService {
 		// 將 Todo 轉 TodoDto
 		return modelMapper.map(updatedTodo, TodoDTO.class);
 	}
-
+	
+	// 刪除代辦事項
 	@Override
 	public void deleteTodo(Long id) throws TodoNotFoundException {
 		// 確認是否有該筆資料
