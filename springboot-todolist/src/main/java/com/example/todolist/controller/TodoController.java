@@ -8,12 +8,15 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.todolist.exception.TodoNotFoundException;
 import com.example.todolist.model.dto.TodoDTO;
 import com.example.todolist.model.entity.Todo;
 import com.example.todolist.response.ApiResponse;
 import com.example.todolist.service.TodoService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -51,6 +54,17 @@ public class TodoController {
 		TodoDTO createdTodoDTO = todoService.createTodo(todoDTO);
 		return ResponseEntity.ok(ApiResponse.success("新增成功", createdTodoDTO));
 	}
+	
+	// 更新待辦事項
+	@PutMapping("/{id}")
+	public ResponseEntity<ApiResponse<TodoDTO>> updateTodo(@PathVariable Long id, @RequestBody TodoDTO todoDTO)  
+			throws TodoNotFoundException {
+		todoDTO.setId(id);
+		TodoDTO updatedTodoDTO = todoService.updateTodo(todoDTO);
+		return ResponseEntity.ok(ApiResponse.success("修改成功", updatedTodoDTO));
+	}
+	
+	
 }
 
 
