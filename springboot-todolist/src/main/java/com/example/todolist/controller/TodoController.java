@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -64,7 +65,13 @@ public class TodoController {
 		return ResponseEntity.ok(ApiResponse.success("修改成功", updatedTodoDTO));
 	}
 	
-	
+	// 刪除待辦事項
+	@DeleteMapping("/{id}")
+	public ResponseEntity<ApiResponse<Void>> deleteTodo(@PathVariable Long id, @RequestBody TodoDTO todoDTO)  
+			throws TodoNotFoundException {
+		todoService.deleteTodo(id);
+		return ResponseEntity.ok(ApiResponse.success("刪除成功", null));
+	}
 }
 
 
