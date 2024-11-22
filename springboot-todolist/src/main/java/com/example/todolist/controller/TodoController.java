@@ -69,7 +69,7 @@ public class TodoController {
 	
 	// 刪除待辦事項
 	@DeleteMapping("/{id}")
-	public ResponseEntity<ApiResponse<Void>> deleteTodo(@PathVariable Long id, @RequestBody TodoDTO todoDTO)  
+	public ResponseEntity<ApiResponse<Void>> deleteTodo(@PathVariable Long id)  
 			throws TodoNotFoundException {
 		todoService.deleteTodo(id);
 		return ResponseEntity.ok(ApiResponse.success("刪除成功", null));
