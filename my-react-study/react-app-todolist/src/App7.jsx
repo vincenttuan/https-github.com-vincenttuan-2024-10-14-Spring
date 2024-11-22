@@ -8,7 +8,7 @@ import { fetchTodos, addTodo, updateTodo, deleteTodo } from './services/todoServ
 function App() {
 
   const [todos, setTodos] = useState([]);
-  const [todo, setTodo] = useState([]);
+  //const [todo, setTodo] = useState([]);
   const [myText, setMyText] = useState('');
 
   useEffect(() => {
@@ -28,20 +28,23 @@ function App() {
     setMyText(e.target.value);
   };
 
-  const onAdd = (e) => {
-    const id = todos.length > 0 ? Math.max(...todos.map((t) => t.id)) + 1 : 1;
+  // 新增代辦事項
+  const onAdd = async (e) => {
     const text = myText;
     const completed = false;
 
     const todo = {
-      id:id, 
       text:text, 
       completed:completed
     };
 
-    setTodos([...todos, todo]);
-
-    console.log(todo);
+    try {
+      const addedTodo = await addTodo(todo);
+      setTodos([...todos, addedTodo]);
+      setMyText('');
+    } catch(e) {
+      console.error('error:', e)
+    }
 
   };
 
