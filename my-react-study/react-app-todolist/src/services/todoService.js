@@ -22,8 +22,18 @@ export const fetchTodos = async() => {
 
 // 新增待辦事項
 export const addTodo = async(todo) => {
-
-
+    const response = await fetch(BASE_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(todo),
+    });
+    const result = await response.json();
+    if(result.status === 200) {
+        return result.data; // 取得 data 資料並返回
+    }
+    throw new Error(result.message);
 };
 
 // 更新待辦事項
@@ -35,5 +45,5 @@ export const updateTodo = async(updateTodo) => {
 // 刪除待辦事項
 export const deleteTodo = async(id) => {
 
-    
+
 };
