@@ -75,7 +75,7 @@ public class TodoController {
 		return ResponseEntity.ok(ApiResponse.success("刪除成功", null));
 	}
 	
-	// 統一處理異常狀況
+	// 統一處理異常狀況(目的: 產生統一的錯誤結構給前端)
 	@ExceptionHandler(TodoNotFoundException.class)
 	public ResponseEntity<ApiResponse<Void>> handleTodoException(TodoNotFoundException e) {
 		return ResponseEntity.status(HttpStatus.NOT_FOUND)
