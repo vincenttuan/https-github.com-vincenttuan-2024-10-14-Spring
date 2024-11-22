@@ -11,7 +11,7 @@
 	<groupId>com.example</groupId>
 	<artifactId>springmvc</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>springmvc</name>  
+	<name>springmvc</name>   
 	<description>Spring MVC project for Spring Boot</description>
 	<url/>
 	<licenses>
