@@ -37,8 +37,8 @@ export const addTodo = async(todo) => {
 };
 
 // 更新待辦事項
-export const updateTodo = async(updateTodo) => {
-    const response = await fetch(`${BASE_URL}/${updateTodo.id}`, {
+export const updateTodo = async(todo) => {
+    const response = await fetch(`${BASE_URL}/${todo.id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'

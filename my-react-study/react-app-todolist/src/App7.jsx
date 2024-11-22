@@ -48,10 +48,22 @@ function App() {
 
   };
 
-  const toggleCompletion = (id) => {
-    setTodos(
-      todos.map((todo) => todo.id == id ? {...todo, completed: !todo.completed} : todo)
-    );
+  // 更新代辦事項
+  const toggleCompletion = async (id) => {
+    try {
+      // 1. 根據 id 找到要修改的 todo
+      const updatedTodo = todos.find(todo => todo.id === id);
+      if(!updatedTodo) return; // 查無資料
+      // 2. 變更 completed 狀態
+      updatedTodo.completed = !updatedTodo.completed;
+      // 3. 調用 updateTodo 方法進行更新
+      await updateTodo(updatedTodo);
+      // 4. 重新渲染 todos
+      setTodos([...todos]);
+    } catch(e) {
+      console.error('error:', e)
+    }
+
   };
 
   const deleteTodo = (id) => {
