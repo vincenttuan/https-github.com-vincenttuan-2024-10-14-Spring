@@ -55,6 +55,13 @@ export const updateTodo = async(updateTodo) => {
 
 // 刪除待辦事項
 export const deleteTodo = async(id) => {
-
+    const response = await fetch(`${BASE_URL}/${id}`, {
+        method: 'DELETE',
+    });
+    const result = await response.json();
+    if(result.status === 200) {
+        return true; // 返回 true
+    }
+    throw new Error(result.message);
 
 };
