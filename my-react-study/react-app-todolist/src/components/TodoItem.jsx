@@ -1,6 +1,6 @@
 import React from "react";
 
-const TodoItem = ({todo, toggleCompletion, deleteTodo}) => {
+const TodoItem = ({todo, toggleCompletion, handleDeleteTodo}) => {
 
     return (
         <li className="list-group-item d-flex justify-content-between align-items-center">
@@ -13,7 +13,7 @@ const TodoItem = ({todo, toggleCompletion, deleteTodo}) => {
             <input type="checkbox" 
                     checked={todo.completed} 
                     onChange={() => toggleCompletion(todo.id)} />
-            <button type="button" className="btn btn-secondary" onClick={() => deleteTodo(todo.id)}>刪除</button>        
+            <button type="button" className="btn btn-secondary" onClick={() => handleDeleteTodo(todo.id)}>刪除</button>        
          </li>
     )
 

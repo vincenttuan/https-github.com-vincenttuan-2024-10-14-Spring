@@ -66,8 +66,11 @@ function App() {
 
   };
 
-  const deleteTodo = (id) => {
-    setTodos(todos.filter(todo => todo.id !== id))
+  // 刪除代辦事項
+  const handleDeleteTodo = (id) => {
+    deleteTodo(id)
+      .then((ok) => setTodos(todos.filter(todo => todo.id !== id)))
+      .catch(e => console.error('error:', e));
   }
 
   return (
@@ -75,7 +78,7 @@ function App() {
       {console.log('diaplay ui')}
       <h1 className='text-center'>My Todo List 7</h1>
       <TodoInput myText={myText} onTextChange={onTextChange} onAdd={onAdd} />
-      <TodoList todos={todos} toggleCompletion={toggleCompletion} deleteTodo={deleteTodo} />
+      <TodoList todos={todos} toggleCompletion={toggleCompletion} handleDeleteTodo={handleDeleteTodo} />
       <div className='mt-4'>
         總數: {totalTodos} 已完成: {completedTodos} 未完成: {incompleteTodos}
       </div>

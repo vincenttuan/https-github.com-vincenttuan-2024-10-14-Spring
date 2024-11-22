@@ -1,7 +1,7 @@
 import React from "react";
 import TodoItem from "./TodoItem";
 
-const TodoList = ({todos, toggleCompletion, deleteTodo}) => {
+const TodoList = ({todos, toggleCompletion, handleDeleteTodo}) => {
 
     return (
         <ul className="list-group">
@@ -10,7 +10,7 @@ const TodoList = ({todos, toggleCompletion, deleteTodo}) => {
             return <TodoItem key={todo.id} // 要加入 key 屬性
                              todo={todo} 
                             toggleCompletion={toggleCompletion}
-                            deleteTodo={deleteTodo} />
+                            handleDeleteTodo={handleDeleteTodo} />
           })
         }
       </ul>
