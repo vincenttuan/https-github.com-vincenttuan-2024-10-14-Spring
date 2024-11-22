@@ -3,9 +3,11 @@ package com.example.todolist.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -71,6 +73,13 @@ public class TodoController {
 			throws TodoNotFoundException {
 		todoService.deleteTodo(id);
 		return ResponseEntity.ok(ApiResponse.success("刪除成功", null));
+	}
+	
+	// 統一處理異常狀況
+	@ExceptionHandler(TodoNotFoundException.class)
+	public ResponseEntity<ApiResponse<Void>> handleTodoException(TodoNotFoundException e) {
+		return ResponseEntity.status(HttpStatus.NOT_FOUND)
+				.body(ApiResponse.error(HttpStatus.NOT_FOUND.value(), e.getMessage()));
 	}
 }
 
