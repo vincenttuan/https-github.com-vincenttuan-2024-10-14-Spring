@@ -13,6 +13,8 @@ import com.example.todolist.model.entity.Todo;
 import com.example.todolist.response.ApiResponse;
 import com.example.todolist.service.TodoService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -43,7 +45,12 @@ public class TodoController {
 		return ResponseEntity.ok(ApiResponse.success("查詢成功", todos));
 	}
 	
-	
+	// 新增待辦事項
+	@PostMapping
+	public ResponseEntity<ApiResponse<TodoDTO>> createTodo(@RequestBody TodoDTO todoDTO) {
+		TodoDTO createdTodoDTO = todoService.createTodo(todoDTO);
+		return ResponseEntity.ok(ApiResponse.success("新增成功", createdTodoDTO));
+	}
 }
 
 
