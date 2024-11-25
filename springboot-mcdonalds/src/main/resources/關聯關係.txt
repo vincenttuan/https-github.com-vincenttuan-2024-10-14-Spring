@@ -1,0 +1,35 @@
+關聯關係
+
+User 表 (user)
+	id: 主鍵 (PK)
+	username: 用戶名
+	password: 密碼
+
+
+Product 表 (product)
+	id: 主鍵 (PK)
+	name: 產品名稱
+	price: 價格
+	關聯: product_image_id：Product 與 ProductImage 之間是一對一的關聯。一個 Product 只對應一個 ProductImage，用於存儲產品的圖片。
+
+ProductImage 表 (product_image)
+	id: 主鍵 (PK)
+	imageBase64: 圖像編碼
+
+Order 表 (order)
+	id: 主鍵 (PK)
+	user_id: 外鍵 (FK)，參考 User 表的 id
+	關聯: userId 欄位是對 User 表的外鍵，可以理解為訂單屬於某個特定用戶。這是實體層中沒顯式標出來的，但應該建立適當的外鍵關聯。
+
+OrderItem 表 (order_item)
+	id: 主鍵 (PK)
+	quantity: 購買數量
+	product_id: 外鍵 (FK)，參考 Product 表的 id
+	order_id: 外鍵 (FK)，參考 Order 表的 id
+	關聯: product_id 表示訂單中的項目對應哪個產品；order_id 表示該項商品屬於哪一筆訂單。
+
+關聯概述
+User 和 Order 之間是 一對多 的關聯關係（每個用戶可以有多筆訂單）。
+Order 和 OrderItem 之間是 一對多 的關聯關係（每筆訂單可以包含多個訂單項目）。
+Product 和 OrderItem 之間是 一對多 的關聯關係（每個產品可以被多個訂單項目引用）。
+Product 與 ProductImage 之間是一對一的關聯關係（一個 Product 只對應一個 ProductImage）。
