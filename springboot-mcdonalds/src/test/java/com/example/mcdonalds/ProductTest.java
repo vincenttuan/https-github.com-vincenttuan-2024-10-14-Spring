@@ -36,6 +36,7 @@ public class ProductTest {
 		product.setProductImage(productImage); // 設定關聯資料
 		productRepository.save(product); // 儲存
 		*/
+		
 		// case 2: 有聯級(Cascade 連動)設定
 		// 例如: @OneToOne(cascade = CascadeType.ALL)
 		// 1. 先建立 product_image 資料, 但是不用先儲存
