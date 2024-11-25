@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -22,5 +24,9 @@ public class Product {
 	@Column(nullable = false, columnDefinition = "default 0")
 	private Integer price;
 	
-
+	// 與 ProductImage 建立一對一關聯(單向)
+	@OneToOne
+	@JoinColumn(name = "product_image_id")
+	private ProductImage productImage;
+	
 }
