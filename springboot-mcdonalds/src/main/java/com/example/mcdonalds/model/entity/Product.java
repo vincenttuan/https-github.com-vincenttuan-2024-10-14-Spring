@@ -1,5 +1,6 @@
 package com.example.mcdonalds.model.entity;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -25,7 +26,7 @@ public class Product {
 	private Integer price;
 	
 	// 與 ProductImage 建立一對一關聯(單向)
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "product_image_id")
 	private ProductImage productImage;
 	
