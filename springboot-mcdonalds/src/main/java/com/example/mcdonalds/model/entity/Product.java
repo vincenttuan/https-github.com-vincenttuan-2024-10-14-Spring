@@ -21,7 +21,7 @@ public class Product {
 	@Column(nullable = false)
 	private String name;
 	
-	@Column(nullable = false, columnDefinition = "default 0")
+	@Column(nullable = false, columnDefinition = "int default 0")
 	private Integer price;
 	
 	// 與 ProductImage 建立一對一關聯(單向)
