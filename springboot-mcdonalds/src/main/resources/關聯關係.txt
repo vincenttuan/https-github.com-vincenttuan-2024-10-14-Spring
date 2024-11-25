@@ -28,6 +28,7 @@ OrderItem 表 (order_item)
 	order_id: 外鍵 (FK)，參考 Order 表的 id
 	關聯: product_id 表示訂單中的項目對應哪個產品；order_id 表示該項商品屬於哪一筆訂單。
 
+
 關聯概述
 User 和 Order 之間是 一對多 的關聯關係（每個用戶可以有多筆訂單）。
 Order 和 OrderItem 之間是 一對多 的關聯關係（每筆訂單可以包含多個訂單項目）。
