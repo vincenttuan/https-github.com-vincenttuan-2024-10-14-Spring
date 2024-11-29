@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
@@ -21,7 +22,9 @@ public class OrderItem {
 	@Column
 	private Integer quantity; // 商品數量 
 	
+	// order_item 與 order 的關係是多對一
 	@ManyToOne
+	@JoinColumn(name = "order_id") // 對應欄位
 	private Order order; // 一個訂單
 	
 	@ManyToOne
