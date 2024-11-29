@@ -1,11 +1,13 @@
 package com.example.mcdonalds.model.entity;
 
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -33,7 +35,7 @@ public class User {
 	@OneToMany(mappedBy = "user")
 	private List<Order> orders;
 	
-	@ManyToMany
+	@ManyToMany(fetch = FetchType.EAGER)
 	@JoinTable(
 			name = "user_product", // 關聯表名稱
 			joinColumns = @JoinColumn(name="user_id"), // 用戶 id 外鍵 
