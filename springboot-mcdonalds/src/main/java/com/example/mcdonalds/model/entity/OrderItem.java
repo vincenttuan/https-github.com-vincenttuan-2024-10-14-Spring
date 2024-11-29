@@ -27,7 +27,9 @@ public class OrderItem {
 	@JoinColumn(name = "order_id") // 對應欄位
 	private Order order; // 一個訂單
 	
+	// order_item 與 product 的關係是多對一
 	@ManyToOne
+	@JoinColumn(name = "product_id")
 	private Product product;
 	
 }
