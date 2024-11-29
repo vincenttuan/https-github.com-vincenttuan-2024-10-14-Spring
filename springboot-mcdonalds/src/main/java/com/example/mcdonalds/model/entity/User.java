@@ -42,7 +42,8 @@ public class User {
 	private Set<Product> favoriteProducts; // 關注的商品
 	
 	/*
-     * hashCode 方法中出現了遞迴循環，通常是因為 User 和 Product 實體之間的雙向關聯造成的，Hibernate 無法處理這種循環依賴。
+     * hashCode 方法中出現了遞迴循環，通常是因為 User 和 Product 實體之間的雙向關聯造成的，
+     * Hibernate 或 Lombok 預設生成的 equals() 方法實作無法處理這種循環依賴。
      * 所以要自行實現
      * */
 	@Override
