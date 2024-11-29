@@ -1,9 +1,12 @@
 package com.example.mcdonalds.model.entity;
 
+import java.util.List;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.Data;
 
@@ -16,7 +19,8 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; // 訂單 id
 	
-	
+	@OneToMany
+	private List<OrderItem> items; // 多筆訂單細目
 	
 }
 
