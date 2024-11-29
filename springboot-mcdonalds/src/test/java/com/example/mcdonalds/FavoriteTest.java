@@ -25,8 +25,8 @@ public class FavoriteTest {
 		Product fish = productRepository.findById(1L).get();
 		Product bigMac = productRepository.findById(2L).get();
 		
-		mary.getFavoriteProducts().add(fish);   // 關聯關係加入對 product 的關注 
-		mary.getFavoriteProducts().add(bigMac); // 關聯關係加入對 product 的關注
+		mary.getFavoriteProducts().add(fish);   // 取得關聯關係並加入對 product 的關注 
+		mary.getFavoriteProducts().add(bigMac); // 取得關聯關係並加入對 product 的關注
 		
 		userRepository.save(mary); // 保存關聯關係
 	}
