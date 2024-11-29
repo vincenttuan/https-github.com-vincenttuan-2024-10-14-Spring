@@ -35,5 +35,6 @@ public class FavoriteTest {
 		mary.getFavoriteProducts().add(bigMac); // 取得關聯關係並加入對 product 的關注
 		
 		userRepository.save(mary); // 保存關聯關係
+		System.out.println("關注筆數: " + mary.getFavoriteProducts().size());
 	}
 }
