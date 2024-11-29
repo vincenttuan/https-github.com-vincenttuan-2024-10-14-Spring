@@ -1,9 +1,5 @@
 package com.example.mcdonalds;
 
-import java.util.LinkedHashSet;
-import java.util.List;
-import java.util.Set;
-
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -12,8 +8,6 @@ import com.example.mcdonalds.model.entity.Product;
 import com.example.mcdonalds.model.entity.User;
 import com.example.mcdonalds.repository.ProductRepository;
 import com.example.mcdonalds.repository.UserRepository;
-
-import jakarta.transaction.Transactional;
 
 @SpringBootTest
 public class FavoriteTest {
