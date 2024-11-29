@@ -6,6 +6,7 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
@@ -23,8 +24,10 @@ public class Order {
 	@OneToMany
 	private List<OrderItem> items; // 多筆訂單細目
 	
+	// order 與 user 的關係是多對一
 	@ManyToOne
-	private Order order;
+	@JoinColumn(name = "user_id")
+	private User user;
 }
 
 
