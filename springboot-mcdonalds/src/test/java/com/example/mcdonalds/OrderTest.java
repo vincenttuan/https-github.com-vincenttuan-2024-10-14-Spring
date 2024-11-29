@@ -35,6 +35,7 @@ public class OrderTest {
 		// 取得 麥香魚(id=1) 的 product 物件
 		Product fish = productRepository.findById(1L).get();
 		
+		// 建立訂單
 		
 	}
 }
