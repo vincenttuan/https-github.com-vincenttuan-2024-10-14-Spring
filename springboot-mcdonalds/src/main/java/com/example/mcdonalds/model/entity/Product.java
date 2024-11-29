@@ -33,7 +33,7 @@ public class Product {
 	@JoinColumn(name = "product_image_id")
 	private ProductImage productImage;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "product")
 	private List<OrderItem> orderItems;
 	
 }

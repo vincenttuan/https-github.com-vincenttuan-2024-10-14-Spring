@@ -21,8 +21,10 @@ public class Order {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id; // 訂單 id
 	
-	@OneToMany
-	private List<OrderItem> items; // 多筆訂單細目
+	// mappedBy 表示 Order 放棄建立關聯關係
+	// 由 OrderItem 的 order 屬性來建立(setOrder(XXX))
+	@OneToMany(mappedBy = "order")
+	private List<OrderItem> orderItems; // 多筆訂單細目
 	
 	// order 與 user 的關係是多對一
 	@ManyToOne

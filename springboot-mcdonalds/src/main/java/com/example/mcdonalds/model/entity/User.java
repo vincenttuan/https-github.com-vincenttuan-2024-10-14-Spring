@@ -25,6 +25,6 @@ public class User {
 	@Column(nullable = false)
 	private String password;
 	
-	@OneToMany
+	@OneToMany(mappedBy = "user")
 	private List<Order> orders;
 }
