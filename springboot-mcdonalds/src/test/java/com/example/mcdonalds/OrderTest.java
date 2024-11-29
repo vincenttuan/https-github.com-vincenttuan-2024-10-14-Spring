@@ -4,6 +4,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.example.mcdonalds.model.entity.Order;
+import com.example.mcdonalds.model.entity.OrderItem;
 import com.example.mcdonalds.model.entity.Product;
 import com.example.mcdonalds.model.entity.User;
 import com.example.mcdonalds.repository.OrderItemRepository;
@@ -36,6 +38,22 @@ public class OrderTest {
 		Product fish = productRepository.findById(1L).get();
 		
 		// 建立訂單
+		Order order = new Order();
+		order.setUser(mary);
+		orderRepository.save(order); // 保存關聯關係
+		
+		// 建立訂單項目
+		OrderItem item1 = new OrderItem();
+		item1.setProduct(bigMac); // 建立與 product 的關聯關係
+		item1.setQuantity(1);
+		item1.setOrder(order); // 建立與 order 的關聯關係
+		orderItemRepository.save(item1); // 保存關聯關係
+		
+		OrderItem item2 = new OrderItem();
+		item2.setProduct(fish); // 建立與 product 的關聯關係
+		item2.setQuantity(1);
+		item2.setOrder(order); // 建立與 order 的關聯關係
+		orderItemRepository.save(item2); // 保存關聯關係
 		
 	}
 }
