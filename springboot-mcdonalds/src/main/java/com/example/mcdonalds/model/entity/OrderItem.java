@@ -24,6 +24,9 @@ public class OrderItem {
 	@ManyToOne
 	private Order order; // 一個訂單
 	
+	@ManyToOne
+	private Product product;
+	
 }
 
 
