@@ -1,6 +1,7 @@
 package com.example.mcdonalds.model.entity;
 
 import java.util.List;
+import java.util.Set;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -9,6 +10,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
@@ -35,5 +37,8 @@ public class Product {
 	
 	@OneToMany(mappedBy = "product")
 	private List<OrderItem> orderItems;
+	
+	@ManyToMany(mappedBy = "favoriteProducts")
+	private Set<User> favoriteUsers;
 	
 }
