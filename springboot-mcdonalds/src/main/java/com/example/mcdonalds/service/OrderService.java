@@ -9,8 +9,8 @@ import com.example.mcdonalds.model.dto.OrderItemDTO;
 
 /*
  * 功能:
- * 尋找該使用者的所有訂單
- * 加入/儲存訂單
+ * 1.尋找該使用者的所有訂單
+ * 2.加入/儲存訂單
 */ 
 public interface OrderService {
 	// 尋找該使用者的所有訂單(根據使用者 id 取得該使用者的訂購資料)
