@@ -1,5 +1,8 @@
 package com.example.mcdonalds.model.dto;
 
+import lombok.Data;
+
+@Data
 public class ProductDTO {
 	private Long id; // 來自於 Product
 	private String name; // 來自於 Product
