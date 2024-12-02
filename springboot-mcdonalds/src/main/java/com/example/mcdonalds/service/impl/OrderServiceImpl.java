@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 
 import com.example.mcdonalds.model.dto.OrderDTO;
 import com.example.mcdonalds.model.dto.OrderItemDTO;
+import com.example.mcdonalds.model.entity.Order;
+import com.example.mcdonalds.model.entity.OrderItem;
+import com.example.mcdonalds.model.entity.User;
 import com.example.mcdonalds.repository.OrderItemRepository;
 import com.example.mcdonalds.repository.OrderRepository;
 import com.example.mcdonalds.repository.ProductRepository;
@@ -39,11 +42,35 @@ public class OrderServiceImpl implements OrderService {
 							  .map(order -> modelMapper.map(order, OrderDTO.class)) // ...OrderDTO
 							  .toList();
 	}
-
+	
+	// 非聯集
 	@Override
 	public Optional<OrderDTO> saveOrder(Long userId, List<OrderItemDTO> orderItems) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		// 1. 得到 user
+		Optional<User> optUser = userRepository.findById(userId);
+		if(optUser.isEmpty()) return null;
+		User user = optUser.get();
+		
+		// 2. 建立訂單
+		Order order = new Order();
+		order.setUser(user); // 設定關聯
+		
+		// 3. 儲存 order
+		orderRepository.save(order); // 非聯集操作時要加入
+		
+		// 4. 建立訂單項目並且逐一儲存
+		orderItems.forEach(item -> { // item 的型別是 OrderItemDTO
+			OrderItem orderItem = modelMapper.map(item, OrderItem.class); // OrderItemDTO 轉 OrderItem
+			orderItem.setOrder(order); // 設定關聯關係
+			orderItemRepository.save(orderItem); // 儲存
+		});
+		
+		return Optional.of(modelMapper.map(order, OrderDTO.class)); // Order 轉 OrderDTO
 	}
+	
+	// 非聯集
+	
+	// 聯集(@OneToMany(cascade = CascadeType.ALL)
+	
 
 }
