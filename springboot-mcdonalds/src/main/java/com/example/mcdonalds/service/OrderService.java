@@ -1,6 +1,7 @@
 package com.example.mcdonalds.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.domain.jaxb.SpringDataJaxb.OrderDto;
 
@@ -17,6 +18,6 @@ public interface OrderService {
 	public List<OrderDto> findOrdersByUserId(Long userId);
 	
 	// 加入/儲存訂單
-	public OrderDTO saveOrder(Long userId, List<OrderItemDTO> orderItems);
+	public Optional<OrderDTO> saveOrder(Long userId, List<OrderItemDTO> orderItems);
 	
 }
