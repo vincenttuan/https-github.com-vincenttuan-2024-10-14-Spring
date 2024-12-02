@@ -19,5 +19,5 @@ public interface ProductService {
 	Optional<ProductDTO> getProductById(Long id);
 	
 	// 新增/儲存商品
-	ProductDTO saveProduct(ProductDTO productDTO);
+	Optional<ProductDTO> saveProduct(ProductDTO productDTO);
 }
