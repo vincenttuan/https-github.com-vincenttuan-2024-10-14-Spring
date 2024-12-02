@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.mcdonalds.model.dto.ProductDTO;
 import com.example.mcdonalds.model.entity.Product;
+import com.example.mcdonalds.model.entity.ProductImage;
 import com.example.mcdonalds.repository.ProductRepository;
 import com.example.mcdonalds.service.ProductService;
 
@@ -40,8 +41,18 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public Optional<ProductDTO> saveProduct(ProductDTO productDTO) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		// 1. ProductDTO 轉 Product
+		Product product = modelMapper.map(productDTO, Product.class);
+		
+		// 2. 配置 ProductImage
+		ProductImage productImage = new ProductImage();
+		productImage.setImageBase64(productDTO.getImageBase64());
+		product.setProductImage(productImage);
+		
+		// 3. 儲存
+		productRepository.save(product);
+		
+		return Optional.of(modelMapper.map(product, ProductDTO.class));
 	}
 
 }
