@@ -86,14 +86,14 @@ public class OrderServiceImpl implements OrderService {
 		List<OrderItem> items = orderItems.stream() // ...OrderItem
 						.map(orderItemDTO -> { 
 							OrderItem orderItem = modelMapper.map(orderItemDTO, OrderItem.class);
-							orderItem.setOrder(order);
+							orderItem.setOrder(order); // 設定關聯
 							return orderItem;
 						}) // ...orderItemDTO
 						.toList(); // List<OrderItem>
 		
 		// 4. 儲存訂單
-		order.setOrderItems(items);
-		orderRepository.save(order);
+		order.setOrderItems(items); // 設定關聯
+		orderRepository.save(order); // 儲存
 		
 		return Optional.of(modelMapper.map(order, OrderDTO.class)); // Order 轉 OrderDTO
 	}
