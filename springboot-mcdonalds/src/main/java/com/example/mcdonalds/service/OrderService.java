@@ -4,6 +4,9 @@ import java.util.List;
 
 import org.springframework.data.domain.jaxb.SpringDataJaxb.OrderDto;
 
+import com.example.mcdonalds.model.dto.OrderDTO;
+import com.example.mcdonalds.model.dto.OrderItemDTO;
+
 /*
  * 功能:
  * 尋找該使用者的所有訂單
@@ -14,6 +17,6 @@ public interface OrderService {
 	public List<OrderDto> findOrdersByUserId(Long userId);
 	
 	// 加入/儲存訂單
-	public OrderDTO
+	public OrderDTO saveOrder(Long userId, List<OrderItemDTO> orderItems);
 	
 }
