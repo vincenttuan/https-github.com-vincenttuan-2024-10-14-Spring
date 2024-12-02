@@ -34,8 +34,7 @@ public class OrderServiceImpl implements OrderService {
 	
 	@Override
 	public List<OrderDTO> findOrdersByUserId(Long userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return orderRepository.;
 	}
 
 	@Override
