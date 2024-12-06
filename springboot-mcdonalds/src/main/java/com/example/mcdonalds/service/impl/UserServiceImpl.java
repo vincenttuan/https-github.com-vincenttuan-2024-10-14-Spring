@@ -72,7 +72,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public Optional<UserDTO> saveUser(UserDTO userDTO) {
 		
-		return Optional.empty();
+		//User user = modelMapper.map(userDTO, User.class);
+		//user = userRepository.save(user);
+		
+		User user = userRepository.save(modelMapper.map(userDTO, User.class));
+		
+		return Optional.of(modelMapper.map(user, UserDTO.class));
 	}
 
 	@Override
