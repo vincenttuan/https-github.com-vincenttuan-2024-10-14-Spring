@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -45,6 +46,7 @@ public class OrderController {
 	}
 	
 	// 該使用者進行結帳
+	@PostMapping("/checkout")
 	public ResponseEntity<ApiResponse<OrderDTO>> addOrder(@RequestBody List<OrderItemDTO> items, HttpSession session) {
 		UserDTO userDTO = (UserDTO)session.getAttribute("userDTO");
 		Optional<OrderDTO> optOrderDTO = orderService.saveOrder(userDTO.getId(), items);
