@@ -79,7 +79,8 @@ public class UserServiceImpl implements UserService {
 		
 		return Optional.of(modelMapper.map(user, UserDTO.class));
 	}
-
+	
+	// 用戶關注列表(用戶關注那些商品)
 	@Override
 	public List<FavoriteProductDTO> getFavoriteProducts() {
 		// TODO Auto-generated method stub
