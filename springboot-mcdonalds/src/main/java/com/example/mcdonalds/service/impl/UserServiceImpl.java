@@ -91,9 +91,10 @@ public class UserServiceImpl implements UserService {
 		// 2. 該用戶的商品集合
 		Set<Product> products = user.getFavoriteProducts();
 		// 3. 將 products 中的每一個 product 元素轉成 FavoriteProductDTO
-		return products.stream()
-						.map(product -> modelMapper.map(product, FavoriteProductDTO.class))
-						.toList();
+		return products // Set<Product>
+					.stream() // ... Product
+					.map(product -> modelMapper.map(product, FavoriteProductDTO.class)) // ... FavoriteProductDTO
+					.toList(); // List<FavoriteProductDTO>
 	}
 
 	@Override
