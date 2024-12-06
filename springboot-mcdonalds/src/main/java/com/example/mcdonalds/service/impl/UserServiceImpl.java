@@ -38,7 +38,8 @@ public class UserServiceImpl implements UserService {
 		UserDTO userDTO = modelMapper.map(optUser.get(), UserDTO.class);
 		return Optional.of(userDTO);
 	}
-
+	
+	/*
 	@Override
 	public Optional<UserDTO> login(LoginDTO loginDTO) {
 		// 1. 透過 username 找到 user
@@ -54,6 +55,18 @@ public class UserServiceImpl implements UserService {
 			return Optional.of(userDTO);
 		}
 		return Optional.empty();
+	}
+	*/
+	@Override
+	public Optional<UserDTO> login(LoginDTO loginDTO) {
+		// 1. 透過 username 找到 user
+		Optional<User> optUser = userRepository.findByUsername(loginDTO.getUsername());
+		// 2. 判斷密碼
+		if(optUser.isPresent() && optUser.get().getPassword().equals(loginDTO.getUsername())) {
+			return Optional.of(modelMapper.map(optUser.getClass(), UserDTO.class));
+		}
+		return Optional.empty();
+	
 	}
 
 	@Override
