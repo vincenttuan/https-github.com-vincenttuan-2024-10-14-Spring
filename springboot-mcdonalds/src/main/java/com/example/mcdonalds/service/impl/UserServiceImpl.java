@@ -2,15 +2,18 @@ package com.example.mcdonalds.service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.mcdonalds.exception.UserNotFoundException;
 import com.example.mcdonalds.model.dto.FavoriteProductDTO;
 import com.example.mcdonalds.model.dto.FavoriteUserDTO;
 import com.example.mcdonalds.model.dto.LoginDTO;
 import com.example.mcdonalds.model.dto.UserDTO;
+import com.example.mcdonalds.model.entity.Product;
 import com.example.mcdonalds.model.entity.User;
 import com.example.mcdonalds.repository.ProductRepository;
 import com.example.mcdonalds.repository.UserRepository;
@@ -82,13 +85,19 @@ public class UserServiceImpl implements UserService {
 	
 	// 用戶關注列表(用戶關注那些商品)
 	@Override
-	public List<FavoriteProductDTO> getFavoriteProducts() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<FavoriteProductDTO> getFavoriteProducts(Long userId) {
+		// 1. 找到 user, 若沒找到則拋出例外
+		User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException());
+		// 2. 該用戶的商品集合
+		Set<Product> products = user.getFavoriteProducts();
+		// 3. 將 products 中的每一個 product 元素轉成 FavoriteProductDTO
+		return products.stream()
+						.map(product -> modelMapper.map(product, FavoriteProductDTO.class))
+						.toList();
 	}
 
 	@Override
-	public List<FavoriteUserDTO> getFavoriteUsers() {
+	public List<FavoriteUserDTO> getFavoriteUsers(Long productId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
