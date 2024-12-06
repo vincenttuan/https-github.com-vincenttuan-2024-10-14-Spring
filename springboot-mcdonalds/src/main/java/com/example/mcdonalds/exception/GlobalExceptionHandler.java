@@ -11,6 +11,7 @@ public class GlobalExceptionHandler {
 	
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<ApiResponse<String>> handleException(Exception ex) {
+		ex.printStackTrace();
 		ApiResponse<String> response = ApiResponse.error(500, ex.getMessage());
 		return ResponseEntity.status(500).body(response);
 	}
