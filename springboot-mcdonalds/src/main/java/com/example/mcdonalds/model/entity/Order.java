@@ -25,6 +25,7 @@ public class Order {
 	
 	// mappedBy 表示 Order 放棄建立關聯關係
 	// 由 OrderItem 的 order 屬性來建立(setOrder(XXX))
+	// fetch = FetchType.EAGER 查詢 Order 時一併也把 orderItems 查出
 	@OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<OrderItem> orderItems; // 多筆訂單細目
 	
