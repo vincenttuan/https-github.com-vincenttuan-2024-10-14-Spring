@@ -8,6 +8,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.example.mcdonalds.exception.ProductNotFoundException;
 import com.example.mcdonalds.exception.UserNotFoundException;
 import com.example.mcdonalds.model.dto.FavoriteProductDTO;
 import com.example.mcdonalds.model.dto.FavoriteUserDTO;
@@ -99,8 +100,15 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public List<FavoriteUserDTO> getFavoriteUsers(Long productId) {
-		// TODO Auto-generated method stub
-		return null;
+		// 1. 找到 product, 若沒找到則拋出例外
+		 Product product = productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException());
+		// 2. 該商品的用戶集合(被那些用戶關注)
+		 Set<User> users = product.getFavoriteUsers();
+		// 3. 將 users 中的每一個 user 元素轉成 UserDTO
+		return users  // Set<User>
+					.stream() // ... user
+					.map(user -> modelMapper.map(user, FavoriteUserDTO.class)) // ... FavoriteUserDTO
+					.toList(); // List<FavoriteUserDTO>
 	}
 
 	@Override
