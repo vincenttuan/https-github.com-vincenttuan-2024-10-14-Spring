@@ -39,6 +39,7 @@ public class OrderServiceImpl implements OrderService {
 	public List<OrderDTO> findOrdersByUserId(Long userId) {
 		return orderRepository.findByUserId(userId) // List<Order>
 							  .stream()             // ...Order
+							  .peek(System.out::println)
 							  .map(order -> modelMapper.map(order, OrderDTO.class)) // ...OrderDTO
 							  .toList();
 	}
