@@ -67,7 +67,7 @@ public class UserServiceImpl implements UserService {
 		Optional<User> optUser = userRepository.findByUsername(loginDTO.getUsername());
 		// 2. 判斷密碼
 		if(optUser.isPresent() && optUser.get().getPassword().equals(loginDTO.getPassword())) {
-			return Optional.of(modelMapper.map(optUser.getClass(), UserDTO.class));
+			return Optional.of(modelMapper.map(optUser.get(), UserDTO.class));
 		}
 		return Optional.empty();
 	
