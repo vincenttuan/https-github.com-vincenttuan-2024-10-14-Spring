@@ -11,6 +11,7 @@ import com.example.mcdonalds.model.dto.FavoriteProductDTO;
 import com.example.mcdonalds.model.dto.FavoriteUserDTO;
 import com.example.mcdonalds.model.dto.LoginDTO;
 import com.example.mcdonalds.model.dto.UserDTO;
+import com.example.mcdonalds.model.entity.User;
 import com.example.mcdonalds.repository.ProductRepository;
 import com.example.mcdonalds.repository.UserRepository;
 import com.example.mcdonalds.service.UserService;
@@ -29,19 +30,35 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public Optional<UserDTO> findByUsername(String username) {
-		// TODO Auto-generated method stub
-		return Optional.empty();
+		Optional<User> optUser = userRepository.findByUsername(username);
+		if(optUser.isEmpty()) {
+			return Optional.empty();
+		}
+		// 利用 modelMapper 將 entity 轉 DTO
+		UserDTO userDTO = modelMapper.map(optUser.get(), UserDTO.class);
+		return Optional.of(userDTO);
 	}
 
 	@Override
 	public Optional<UserDTO> login(LoginDTO loginDTO) {
-		// TODO Auto-generated method stub
+		// 1. 透過 username 找到 user
+		Optional<User> optUser = userRepository.findByUsername(loginDTO.getUsername());
+		if(optUser.isEmpty()) {
+			return Optional.empty();
+		}
+		// 2. 判斷密碼
+		User user = optUser.get();
+		if(user.getPassword().equals(loginDTO.getPassword())) {
+			// 3. entity 轉 DTO
+			UserDTO userDTO = modelMapper.map(user, UserDTO.class);
+			return Optional.of(userDTO);
+		}
 		return Optional.empty();
 	}
 
 	@Override
 	public Optional<UserDTO> saveUser(UserDTO userDTO) {
-		// TODO Auto-generated method stub
+		
 		return Optional.empty();
 	}
 
