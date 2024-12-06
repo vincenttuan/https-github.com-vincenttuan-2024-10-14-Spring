@@ -110,13 +110,21 @@ public class UserServiceImpl implements UserService {
 					.map(user -> modelMapper.map(user, FavoriteUserDTO.class)) // ... FavoriteUserDTO
 					.toList(); // List<FavoriteUserDTO>
 	}
-
+	
+	// User 新增商品關注 
 	@Override
 	public void addFavoriteProduct(Long userId, Long productId) {
-		// TODO Auto-generated method stub
-		
+		// 1. 找到 user
+		User user = userRepository.findById(userId).orElseThrow(() -> new UserNotFoundException());
+		// 2. 找到商品
+		Product product = productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException());
+		// 3. 將商品加入到用戶關注清單列表
+		user.getFavoriteProducts().add(product);
+		// 4. 保存關係
+		userRepository.save(user);
 	}
-
+	
+	// User 移除商品關注
 	@Override
 	public void removeFavoriteProduct(Long userId, Long productId) {
 		// TODO Auto-generated method stub
