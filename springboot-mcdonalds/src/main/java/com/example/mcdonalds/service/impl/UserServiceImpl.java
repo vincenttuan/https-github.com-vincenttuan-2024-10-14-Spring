@@ -134,7 +134,7 @@ public class UserServiceImpl implements UserService {
 		Product product = productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException());
 		// 3. 將商品從用戶關注清單列表中移除
 		//user.getFavoriteProducts().remove(product); // remove
-		
+		/*
 		Iterator<Product> iter = user.getFavoriteProducts().iterator();
 		while(iter.hasNext()) {
 			Product p = iter.next();
@@ -142,7 +142,8 @@ public class UserServiceImpl implements UserService {
 				iter.remove();
 				break; // 因為是移除一筆, 所以加上 break 增加執行效率
 			}
-		}
+		}*/
+		user.getFavoriteProducts().removeIf(p -> p.getId().equals(product.getId()));
 		
 		// 4. 保存關係
 		userRepository.save(user);
