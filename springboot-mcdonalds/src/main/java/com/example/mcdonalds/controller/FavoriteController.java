@@ -18,6 +18,16 @@ import com.example.mcdonalds.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 
+/*
+ * WEB REST API (必須要登入才能使用)
+ * ----------------------------------------------------------
+ * Servlet-Path: /favorites
+ * ----------------------------------------------------------
+ * GET     /favorites                     獲取"登入用戶"所關注清單
+ * GET     /favorites/product/{productId} 獲取商品被關注清單 
+ * POST    /favorites/{productId}         "登入用戶"加入關注的商品
+ * DELETE  /favorites/{productId}         "登入用戶"取消所關注的商品
+ * */
 @RestController
 @RequestMapping("/favorites")
 @CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
