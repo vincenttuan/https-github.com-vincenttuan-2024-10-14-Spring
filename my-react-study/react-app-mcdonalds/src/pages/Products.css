@@ -1,0 +1,115 @@
+/* Product.css */
+
+.products-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .add-product-form {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #ffffff;
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .add-product-form h2 {
+    margin-bottom: 10px;
+  }
+  
+  .add-product-form input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .add-product-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #28a745;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-product-form button:hover {
+    background-color: #218838;
+  }
+  
+  .product-list {
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .product-list ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .product-list li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    background-color: #ffffff;
+    margin-bottom: 5px;
+    border-radius: 4px;
+  }
+  
+  .product-list li span {
+    flex: 1;
+  }
+  
+  .product-list li button {
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .product-list li button:hover {
+    background-color: #0056b3;
+  }
+  
+  .product-list li img {
+    max-width: 50px;
+    max-height: 50px;
+    margin-right: 10px;
+    border-radius: 4px;
+  } 
+  
+  /* 關注按鈕 */
+.favorite-button {
+  padding: 8px 12px;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.favorite-button.follow {
+  background-color: #28a745; /* 綠色 */
+}
+
+.favorite-button.follow:hover {
+  background-color: #218838;
+}
+
+.favorite-button.unfollow {
+  background-color: #dc3545; /* 紅色 */
+}
+
+.favorite-button.unfollow:hover {
+  background-color: #c82333;
+}

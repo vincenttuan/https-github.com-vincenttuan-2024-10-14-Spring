@@ -1,0 +1,67 @@
+/* Checkout.css */
+
+.checkout-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #f9f9f9;
+  }
+  
+  .checkout-title {
+    font-size: 2em;
+    margin-bottom: 10px;
+  }
+  
+  .checkout-message {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: #28a745;
+  }
+  
+  .order-history-title {
+    font-size: 1.5em;
+    margin: 20px 0;
+  }
+  
+  .loading-message {
+    font-size: 1.1em;
+    color: #555;
+  }
+  
+  .no-orders-message {
+    font-size: 1.1em;
+    color: #777;
+  }
+  
+  .order-list {
+    width: 100%;
+    max-width: 800px;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .order-item {
+    background-color: #ffffff;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-summary {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .order-items-list {
+    list-style-type: none;
+    padding-left: 20px;
+  }
+  
+  .order-item-detail {
+    font-size: 1em;
+    margin-bottom: 5px;
+  }
+  
