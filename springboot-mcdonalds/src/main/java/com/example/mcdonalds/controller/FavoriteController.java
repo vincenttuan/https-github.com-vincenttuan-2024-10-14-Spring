@@ -7,6 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -51,7 +52,18 @@ public class FavoriteController {
 	}
 	
 	// "登入用戶"加入關注的商品
+	@PostMapping("/{productId}")
+	public ResponseEntity<ApiResponse<String>> addFavorite(@PathVariable Long productId, HttpSession session) {
+		Long userId = ((UserDTO)session.getAttribute("userDTO")).getId();
+		userService.addFavoriteProduct(userId, productId);
+		return ResponseEntity.ok(ApiResponse.success("加入成功", "商品已加入關注"));
+	}
 	
 	// "登入用戶"取消關注的商品
-	
+	@PostMapping("/{productId}")
+	public ResponseEntity<ApiResponse<String>> addUser(@PathVariable Long productId, HttpSession session) {
+		Long userId = ((UserDTO)session.getAttribute("userDTO")).getId();
+		userService.removeFavoriteProduct(userId, productId);
+		return ResponseEntity.ok(ApiResponse.success("取消成功", "商品已取消關注"));
+	}
 }
