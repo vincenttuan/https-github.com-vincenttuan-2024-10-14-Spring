@@ -14,7 +14,10 @@ function Navbar({ cartCount, isLoggedIn, onLogout }) {
           <Link to="/products">商品</Link>
         </li>
         <li>
-          <Link to="/cart">購物車 ({cartCount})</Link>
+          {
+            isLoggedIn ? (<Link to="/cart">購物車 ({cartCount})</Link>) 
+                       : (<></>)
+          }
         </li>
         {isLoggedIn ? (
           <>

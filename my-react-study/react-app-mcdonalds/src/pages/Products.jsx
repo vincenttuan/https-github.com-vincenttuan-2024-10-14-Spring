@@ -87,7 +87,7 @@ function Products({ addToCart, isLoggedIn }) {
 
   return (
     <div className="products-container">
-      <div className="add-product-form">
+      <div className="add-product-form" style={{display: isLoggedIn ? 'visible' : 'none'}}>
         <h2>新增商品</h2>
         <input
           type="text"
@@ -106,9 +106,9 @@ function Products({ addToCart, isLoggedIn }) {
           accept="image/*"
           onChange={handleImageUpload}
         />
-        {isLoggedIn && (
-          <button onClick={handleAddProduct} >新增商品</button>
-        )}
+        {
+          isLoggedIn && (<button onClick={handleAddProduct} >新增商品</button>)
+        }
         
       </div>
       <div className="product-list">
