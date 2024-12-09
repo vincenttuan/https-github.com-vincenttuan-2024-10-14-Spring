@@ -6,10 +6,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.mcdonalds.model.dto.FavoriteProductDTO;
+import com.example.mcdonalds.model.dto.FavoriteUserDTO;
 import com.example.mcdonalds.model.dto.UserDTO;
 import com.example.mcdonalds.response.ApiResponse;
 import com.example.mcdonalds.service.UserService;
@@ -32,6 +34,11 @@ public class FavoriteController {
 	}
 	
 	// 獲取商品被關注清單
+	@GetMapping("/product/{productId}")
+	public ResponseEntity<ApiResponse<List<FavoriteUserDTO>>> getFavoriteUsers(@PathVariable Long productId) {
+		List<FavoriteUserDTO> users = userService.getFavoriteUsers(productId);
+		return ResponseEntity.ok(ApiResponse.success("獲取該商品關注的使用者列表", users));
+	}
 	
 	// "登入用戶"加入關注的商品
 	
