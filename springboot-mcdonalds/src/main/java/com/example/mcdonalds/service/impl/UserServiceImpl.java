@@ -1,5 +1,6 @@
 package com.example.mcdonalds.service.impl;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -132,7 +133,16 @@ public class UserServiceImpl implements UserService {
 		// 2. 找到商品
 		Product product = productRepository.findById(productId).orElseThrow(() -> new ProductNotFoundException());
 		// 3. 將商品從用戶關注清單列表中移除
-		user.getFavoriteProducts().remove(product); // remove
+		//user.getFavoriteProducts().remove(product); // remove
+		
+		Iterator<Product> iter = user.getFavoriteProducts().iterator();
+		while(iter.hasNext()) {
+			Product p = iter.next();
+			if(p.getId().equals(product.getId())) { // 找到指定 id 並移除
+				iter.remove();
+			}
+		}
+		
 		// 4. 保存關係
 		userRepository.save(user);
 		
