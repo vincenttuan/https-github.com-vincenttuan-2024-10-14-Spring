@@ -140,6 +140,7 @@ public class UserServiceImpl implements UserService {
 			Product p = iter.next();
 			if(p.getId().equals(product.getId())) { // 找到指定 id 並移除
 				iter.remove();
+				break; // 因為是移除一筆, 所以加上 break 增加執行效率
 			}
 		}
 		
