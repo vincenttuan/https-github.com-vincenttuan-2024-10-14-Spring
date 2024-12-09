@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -60,7 +61,7 @@ public class FavoriteController {
 	}
 	
 	// "登入用戶"取消關注的商品
-	@PostMapping("/{productId}")
+	@DeleteMapping("/{productId}")
 	public ResponseEntity<ApiResponse<String>> addUser(@PathVariable Long productId, HttpSession session) {
 		Long userId = ((UserDTO)session.getAttribute("userDTO")).getId();
 		userService.removeFavoriteProduct(userId, productId);
