@@ -4,6 +4,9 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import jakarta.websocket.CloseReason;
 import jakarta.websocket.OnClose;
 import jakarta.websocket.OnError;
@@ -47,7 +50,19 @@ public class ChatChannel {
 	
 	@OnMessage // 當伺服端收到來自客戶端的消息時觸發
 	public void onMessage(String jsonString, Session session) {
-		broadcast(session.getId(), jsonString);
+		// 將 json 字串轉 json 物件
+		/*
+		 { "to": "4", "message": "Hello" } // 私訊
+		 { "to": "all", "message": "Hi" }  // 廣播
+		*/
+		JsonObject jsonObject = JsonParser.parseString(jsonString).getAsJsonObject();
+		String to = jsonObject.get("to").getAsString();
+		String message = jsonObject.get("message").getAsString();
+		if(to.equals("all")) {
+			broadcast(session.getId(), jsonString);
+		} else {
+			sendTo(session.getId(), to, message);
+		}
 	}
 	
 	@OnClose
