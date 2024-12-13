@@ -59,7 +59,7 @@ public class ChatChannel {
 		String to = jsonObject.get("to").getAsString();
 		String message = jsonObject.get("message").getAsString();
 		if(to.equals("all")) {
-			broadcast(session.getId(), jsonString); // 廣播
+			broadcast(session.getId(), message); // 廣播
 		} else {
 			sendTo(session.getId(), to, message); // 私訊
 		}
