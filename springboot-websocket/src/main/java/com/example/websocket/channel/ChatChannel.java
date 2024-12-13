@@ -45,7 +45,7 @@ public class ChatChannel {
 	public void onOpen(Session session) {
 		// 每一個新連線都會得到一個 session id
 		sessions.add(session); // 將 session 加入到集合
-		broadcast(session.getId(), "已連線");
+		broadcast(session.getId(), "已連線, 在線 id:" + sessions.stream().map(s -> s.getId()).toList());
 	}
 	
 	@OnMessage // 當伺服端收到來自客戶端的消息時觸發
@@ -68,7 +68,7 @@ public class ChatChannel {
 	@OnClose
 	public void onClose(Session session, CloseReason closeReason) {
 		sessions.remove(session); // 將 session 從集合中移出
-		broadcast(session.getId(), "已離線");
+		broadcast(session.getId(), "已離線, 在線 id:" + sessions.stream().map(s -> s.getId()).toList());
 	}
 	
 	@OnError
