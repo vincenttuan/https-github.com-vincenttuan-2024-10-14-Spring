@@ -43,11 +43,13 @@ openButton.onclick = () => {
 
 // 關閉按鈕
 closeButton.onclick = () => {
-	
+	webSocket.close();
+	addLog("Client 端主動關閉 WebSocket 連線");	
 };
 
 // 傳送按鈕
 sendButton.onclick = () => {
-	
+	const message = messageInput.value;
+	webSocket.send(message);
 };
 
