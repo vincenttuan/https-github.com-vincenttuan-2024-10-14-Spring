@@ -25,7 +25,7 @@ public class ChatChannel {
 	private void broadcast(String sessionId, String message) {
 		sessions.forEach(session -> {
 			if(session.isOpen()) {
-				session.getAsyncRemote().sendText(String.format("[ %02d ]說: %s", sessionId, message));
+				session.getAsyncRemote().sendText(String.format("[ %s ]說: %s", sessionId, message));
 			}
 		});
 	}
