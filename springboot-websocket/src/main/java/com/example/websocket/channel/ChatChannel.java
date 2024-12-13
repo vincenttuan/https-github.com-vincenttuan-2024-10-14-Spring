@@ -30,6 +30,14 @@ public class ChatChannel {
 		});
 	}
 	
+	// 傳送私訊 
+	private void sendTo(String fromId, String toId, String message) {
+		sessions.stream()
+			.filter(session -> session.getId().equals(toId) && session.isOpen())
+			.findFirst()
+			.ifPresent(session -> session.getAsyncRemote().sendText(String.format("[ %s ]密: %s", fromId, message)));
+	}
+	
 	@OnOpen // 當客戶端與伺服器建立連線時觸發
 	public void onOpen(Session session) {
 		// 每一個新連線都會得到一個 session id
