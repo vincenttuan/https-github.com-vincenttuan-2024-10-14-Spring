@@ -33,6 +33,7 @@ public class ChatChannel {
 	@OnOpen // 當客戶端與伺服器建立連線時觸發
 	public void onOpen(Session session) {
 		// 每一個新連線都會得到一個 session id
+		sessions.add(session); // 將 session 加入到集合
 		broadcast(session.getId(), "已連線");
 	}
 	
@@ -43,6 +44,7 @@ public class ChatChannel {
 	
 	@OnClose
 	public void onClose(Session session, CloseReason closeReason) {
+		sessions.remove(session); // 將 session 從集合中移出
 		broadcast(session.getId(), "已離線");
 	}
 	
