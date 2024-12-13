@@ -1,5 +1,9 @@
 package com.example.websocket.channel;
 
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
+
 import jakarta.websocket.CloseReason;
 import jakarta.websocket.OnClose;
 import jakarta.websocket.OnError;
@@ -13,6 +17,18 @@ import jakarta.websocket.server.ServerEndpoint;
 // Websocket 連接路徑 ws://localhost:8080/channel/chat
 @ServerEndpoint(value = "/channel/chat")
 public class ChatChannel {
+	
+	// 利用 Set + synchronized 來保存所有 session
+	private static final Set<Session> sessions = Collections.synchronizedSet(new HashSet<>());
+	
+	// 廣播
+	private void broadcast(String sessionId, String message) {
+		sessions.forEach(session -> {
+			if(session.isOpen()) {
+				session.getAsyncRemote().sendText(String.format("[ %02d ]說: %s", sessionId, message));
+			}
+		});
+	}
 	
 	@OnOpen // 當客戶端與伺服器建立連線時觸發
 	public void onOpen(Session session) {
