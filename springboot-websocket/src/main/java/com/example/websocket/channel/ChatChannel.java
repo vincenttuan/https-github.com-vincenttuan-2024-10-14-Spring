@@ -14,23 +14,26 @@ import jakarta.websocket.server.ServerEndpoint;
 @ServerEndpoint(value = "/channel/chat")
 public class ChatChannel {
 	
-	@OnOpen
+	@OnOpen // 當客戶端與伺服器建立連線時觸發
 	public void onOpen(Session session) {
-		
+		// 每一個新連線都會得到一個 session id
+		System.out.println("客戶端[ " + session.getId() +" ] 已連線");
+		session.getAsyncRemote().sendText("客戶端[ " + session.getId() +" ] 已連線");
 	}
 	
-	@OnMessage
+	@OnMessage // 當伺服端收到來自客戶端的消息時觸發
 	public void onMessage(String jsonString, Session session) {
-		
+		String reply = "伺服端收到了:" + jsonString;
+		session.getAsyncRemote().sendText(reply);
 	}
 	
 	@OnClose
 	public void onClose(Session session, CloseReason closeReason) {
-		
+		System.out.println("[ " + session.getId() +" ] 已離線");
 	}
 	
 	@OnError
 	public void onError(Session session, Throwable throwable) {
-		
+		System.out.println("[ " + session.getId() +" ] 發生錯誤 ! " + throwable);
 	}
 }
