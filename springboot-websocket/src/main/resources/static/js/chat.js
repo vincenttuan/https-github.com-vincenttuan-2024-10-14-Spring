@@ -2,6 +2,7 @@ var webSocket;
 const url = 'ws://localhost:8080/channel/chat';
 const openButton = document.getElementById('openButton');
 const closeButton = document.getElementById('closeButton');
+const toInput = document.getElementById('toInput');
 const messageInput = document.getElementById('messageInput');
 const sendButton = document.getElementById('sendButton');
 const log = document.getElementById('log');
@@ -19,6 +20,7 @@ openButton.onclick = () => {
 		addLog("WebSocket 連線成功");
 		openButton.disabled = true;
 		closeButton.disabled = false;
+		toInput.disabled = false;
 		messageInput.disabled = false;
 		sendButton.disabled = false;		
 	};
@@ -31,6 +33,7 @@ openButton.onclick = () => {
 		addLog("WebSocket 連線已關閉");	
 		openButton.disabled = false;
 		closeButton.disabled = true;
+		toInput.disabled = true;
 		messageInput.disabled = true;
 		sendButton.disabled = true;
 	};
@@ -49,7 +52,12 @@ closeButton.onclick = () => {
 
 // 傳送按鈕
 sendButton.onclick = () => {
+	const to = toInput.value;
 	const message = messageInput.value;
-	webSocket.send(message);
+	const jsonObj = { // 建立 json 物件
+		"to": to, "message": message
+	};
+	// 將 json 物件轉 json 字串後傳送
+	webSocket.send(JSON.stringify(jsonObj)); // JSON.stringify 將 json 物件轉 json 字串
 };
 
