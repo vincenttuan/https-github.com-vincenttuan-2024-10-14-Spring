@@ -15,6 +15,30 @@ const addLog = (message) => {
 openButton.onclick = () => {
 	webSocket = new WebSocket(url);
 	
+	webSocket.onopen = () => {
+		addLog("WebSocket 連線成功");
+		openButton.disabled = true;
+		closeButton.disabled = false;
+		messageInput.disabled = false;
+		sendButton.disabled = false;		
+	};
+	
+	webSocket.onmessage = (event) => {
+		addLog(`收到消息: ${event.data}`);	
+	};
+	
+	webSocket.onclose = (event) => {
+		addLog("WebSocket 連線已關閉");	
+		openButton.disabled = false;
+		closeButton.disabled = true;
+		messageInput.disabled = true;
+		sendButton.disabled = true;
+	};
+	
+	webSocket.onerror = (event) => {
+		addLog(`發生錯誤: ${event}`)	
+	};
+	
 };
 
 // 關閉按鈕
