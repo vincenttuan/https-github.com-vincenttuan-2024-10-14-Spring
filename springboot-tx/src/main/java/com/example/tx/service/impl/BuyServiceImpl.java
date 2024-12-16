@@ -6,12 +6,15 @@ import org.springframework.stereotype.Service;
 import com.example.tx.service.BookService;
 import com.example.tx.service.BuyService;
 
+import jakarta.transaction.Transactional;
+
 @Service // 交易服務
 public class BuyServiceImpl implements BuyService {
 	
 	@Autowired
 	private BookService bookService;
 	
+	@Transactional
 	@Override
 	public void buyOneBook(String username, Integer bookId) {
 		System.out.println(username + " 要買一本書, bookId = " + bookId);
