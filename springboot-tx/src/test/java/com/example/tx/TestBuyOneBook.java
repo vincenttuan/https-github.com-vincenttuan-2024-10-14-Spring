@@ -14,9 +14,11 @@ public class TestBuyOneBook {
 	@Test
 	public void test() {
 		try {
-			buyService.buyOneBook("", null);
+			buyService.buyOneBook("John", 1);
+			System.out.println("買書成功");
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
+			System.err.println("買書失敗");
 		}
 	}
 }
