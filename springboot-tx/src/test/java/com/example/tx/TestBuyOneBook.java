@@ -21,6 +21,10 @@ public class TestBuyOneBook {
 		// 取得交易前餘額		
 		Integer walletBalance = bookService.getWalletBalance(username);
 		System.out.println(username + " 交易前餘額 = " + walletBalance);
+		// 取得交易前書本庫存
+		Integer amount = bookService.getBookAmount(bookId);
+		System.out.println("bookId = " + bookId + " 交易前庫存 = " + amount);
+		System.out.println("---------------------------------------------------------------");
 		try {
 			buyService.buyOneBook(username, bookId);
 			System.out.println("買書成功");
@@ -28,8 +32,13 @@ public class TestBuyOneBook {
 			System.err.println(e.getMessage());
 			System.err.println("買書失敗");
 		}
+		System.out.println("---------------------------------------------------------------");
 		// 取得交易後餘額
 		walletBalance = bookService.getWalletBalance(username);
 		System.out.println(username + " 交易後餘額 = " + walletBalance);
+		// 取得交易後書本庫存
+		amount = bookService.getBookAmount(bookId);
+		System.out.println("bookId = " + bookId + " 交易後庫存 = " + amount);
+				
 	}
 }
